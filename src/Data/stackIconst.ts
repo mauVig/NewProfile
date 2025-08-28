@@ -16,7 +16,7 @@ import { GrMysql } from 'react-icons/gr';
 import { FaAngular } from 'react-icons/fa';
 
 
-export const stack = [
+export const myStack = [
   {
     name: 'HTML 5',
     icon: TbBrandHtml5,
