@@ -1,90 +1,105 @@
 'use client';
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { myStack } from '@/Data/stackIconst'
 
 export const StackTecnh = () => {
-    const scrollStyles = {
-        animation: 'scroll-infinite 20s linear infinite',
-    }
-
-    // Dividir myStack en dos arrays alternados
-    const firstRow = myStack.filter((_, index) => index % 2 === 0)
-    const secondRow = myStack.filter((_, index) => index % 2 === 1)
+    const containerRef = useRef<HTMLDivElement>(null)
+    const animationRef = useRef<number | null>(null)
+    const [items, setItems] = useState(myStack.map((tech, index) => ({
+        ...tech,
+        id: index,
+        position: index * 200 // AUMENTADO: más separación entre elementos
+    })))
+    
+    useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+        
+        const ELEMENT_WIDTH = 140 // AUMENTADO: ancho del elemento incluyendo texto más grande
+        const ELEMENT_SPACING = 60 // AUMENTADO: más espaciado entre elementos
+        const ELEMENT_TOTAL_WIDTH = ELEMENT_WIDTH + ELEMENT_SPACING // 200px total
+        const SPEED = 1.5 // Velocidad de movimiento
+        
+        const animate = () => {
+            setItems(prevItems => {
+                return prevItems.map((item, index) => {
+                    let newPosition = item.position - SPEED
+                    
+                    // Detectar si el elemento ha salido completamente por el límite izquierdo
+                    if (newPosition + ELEMENT_WIDTH < 0) {
+                        // Encontrar la posición del último elemento (más a la derecha)
+                        const lastElementPosition = Math.max(...prevItems.map(i => i.position))
+                        
+                        // Colocar este elemento después del último
+                        newPosition = lastElementPosition + ELEMENT_TOTAL_WIDTH
+                    }
+                    
+                    return {
+                        ...item,
+                        position: newPosition
+                    }
+                })
+            })
+            
+            animationRef.current = requestAnimationFrame(animate)
+        }
+        
+        animate()
+        
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current)
+            }
+        }
+    }, [])
     
     return (
-        <div className="overflow-hidden relative w-full py-4">
+        <div className="overflow-hidden relative w-full containerTech min-h-[400px] flex items-center" ref={containerRef}>
+            <div 
+                className="relative h-32" // AUMENTADO: altura del contenedor para acomodar elementos más grandes
+            >
+                {items.map((item) => (
+                    <div 
+                        key={`stack-${item.id}`} 
+                        className="absolute flex flex-col items-center justify-center min-w-[140px] px-4" // AUMENTADO: min-width y padding
+                        style={{
+                            transform: `translateX(${item.position}px)`,
+                            left: 0,
+                            top: 0,
+                            transition: 'none'
+                        }}
+                    >
+                        <item.icon className="w-28 h-28 text-myBack-800 mb-3" /> {/* AUMENTADO: iconos más grandes y más margen */}
+                        <p className="text-3xl font-bold text-center text-myBack-800 leading-tight"> {/* AUMENTADO: texto más grande y bold */}
+                            {item.name}
+                        </p>
+                    </div>
+                ))}
+            </div>
             <style>
-                {`
-                @keyframes scroll-infinite {
-                    from { transform: translateX(0); }
-                    to { transform: translateX(-50%); }
-                }
-                @keyframes scroll-infinite-reverse {
-                    from { transform: translateX(-50%); }
-                    to { transform: translateX(0); }
-                }
-                `}
+                {` 
+                    .containerTech::before{
+                        content:'';
+                        position:absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        width: 300px;
+                        background: linear-gradient(90deg, transparent 0%, #eebd82 81%);
+                        z-index: 5;
+                    }
+                    .containerTech::after{
+                        content:'';
+                        position:absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        width:300px;
+                        background: linear-gradient(270deg, transparent 0%, #eebd82 81%);
+                        z-index: 5;
+                    }
+                `}  
             </style>
-            
-            {/* Primera fila */}
-            <div 
-                className="flex mb-4" 
-                style={scrollStyles}
-                onMouseEnter={(e) => (e.target as HTMLDivElement).style.animationPlayState = 'paused'}
-                onMouseLeave={(e) => (e.target as HTMLDivElement).style.animationPlayState = 'running'}
-            >
-                {/* Primera copia de los elementos de la primera fila */}
-                {firstRow.map((tech, index) => (
-                    <div 
-                        key={`first-row-${index}`} 
-                        className="flex flex-col items-center justify-center min-w-[100px] flex-shrink-0 mx-4"
-                    >
-                        <tech.icon className="w-12 h-12 text-myBack-800" />
-                        <p className="text-sm mt-2 text-center">{tech.name}</p>
-                    </div>
-                ))}
-                {/* Segunda copia para el efecto infinito */}
-                {firstRow.map((tech, index) => (
-                    <div 
-                        key={`first-row-duplicate-${index}`} 
-                        className="flex flex-col items-center justify-center min-w-[100px] flex-shrink-0 mx-4"
-                    >
-                        <tech.icon className="w-12 h-12 text-myBack-800" />
-                        <p className="text-sm mt-2 text-center">{tech.name}</p>
-                    </div>
-                ))}
-            </div>
-
-            {/* Segunda fila (dirección opuesta) */}
-            <div 
-                className="flex" 
-                style={{
-                    animation: 'scroll-infinite-reverse 20s linear infinite',
-                }}
-                onMouseEnter={(e) => (e.target as HTMLDivElement).style.animationPlayState = 'paused'}
-                onMouseLeave={(e) => (e.target as HTMLDivElement).style.animationPlayState = 'running'}
-            >
-                {/* Primera copia de los elementos de la segunda fila */}
-                {secondRow.map((tech, index) => (
-                    <div 
-                        key={`second-row-${index}`} 
-                        className="flex flex-col items-center justify-center min-w-[100px] flex-shrink-0 mx-4"
-                    >
-                        <tech.icon className="w-12 h-12 text-myBack-800" />
-                        <p className="text-sm mt-2 text-center">{tech.name}</p>
-                    </div>
-                ))}
-                {/* Segunda copia para el efecto infinito */}
-                {secondRow.map((tech, index) => (
-                    <div 
-                        key={`second-row-duplicate-${index}`} 
-                        className="flex flex-col items-center justify-center min-w-[100px] flex-shrink-0 mx-4"
-                    >
-                        <tech.icon className="w-12 h-12 text-myBack-800" />
-                        <p className="text-sm mt-2 text-center">{tech.name}</p>
-                    </div>
-                ))}
-            </div>
         </div>
     )
 }

@@ -1,10 +1,30 @@
+'use client';
+import { useState, useEffect } from "react";
 import LightRays from "./components/LightRays";
 import RotatingText from "./components/RotatingText";
 
 const Header = () => {
+    const [windowHeight, setWindowHeight] = useState(0);
+
+    useEffect(() => {
+        // Función para actualizar la altura de la ventana
+        const updateWindowHeight = () => {
+            setWindowHeight(window.innerHeight);
+        };
+
+        // Establecer la altura inicial
+        updateWindowHeight();
+
+        // Agregar listener para cambios de tamaño
+        window.addEventListener('resize', updateWindowHeight);
+
+        // Cleanup del listener
+        return () => window.removeEventListener('resize', updateWindowHeight);
+    }, []);
+
     return (
-        <header className="w-full min-h-[800px] bg-myBack-800 text-myGray-100 flex justify-center items-center h-full">
-            <div style={{ width: '100%', height: '800px', position: 'absolute'}}>
+        <header className={`w-full ${windowHeight > 800 ? 'min-h-svh' : 'min-h-[800px]'} min-h-svh bg-myBack-800 text-myGray-100 flex justify-center items-center h-full`}>
+            <div style={{ width: '100%', height: '100%', position: 'absolute'}}>
                 <LightRays
                     raysOrigin="top-center"
                     raysColor="#FCDDB8"
@@ -17,7 +37,6 @@ const Header = () => {
                     distortion={0.05}
                     className="custom-rays"
                 />
-
             </div>
             
             <div className="container mx-auto px-4 ">
