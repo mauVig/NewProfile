@@ -7,18 +7,12 @@ const Header = () => {
     const [windowHeight, setWindowHeight] = useState(0);
 
     useEffect(() => {
-        // Función para actualizar la altura de la ventana
         const updateWindowHeight = () => {
             setWindowHeight(window.innerHeight);
         };
-
-        // Establecer la altura inicial
         updateWindowHeight();
-
-        // Agregar listener para cambios de tamaño
+        
         window.addEventListener('resize', updateWindowHeight);
-
-        // Cleanup del listener
         return () => window.removeEventListener('resize', updateWindowHeight);
     }, []);
 

@@ -56,12 +56,12 @@ export const StackTecnh = () => {
     return (
         <div className="overflow-hidden relative w-full containerTech min-h-[400px] flex items-center" ref={containerRef}>
             <div 
-                className="relative h-32" // AUMENTADO: altura del contenedor para acomodar elementos más grandes
+                className="relative h-32" 
             >
                 {items.map((item) => (
                     <div 
                         key={`stack-${item.id}`} 
-                        className="absolute flex flex-col items-center justify-center min-w-[140px] px-4" // AUMENTADO: min-width y padding
+                        className="absolute flex flex-col items-center justify-center min-w-[140px] px-4 w-52" 
                         style={{
                             transform: `translateX(${item.position}px)`,
                             left: 0,
@@ -69,8 +69,8 @@ export const StackTecnh = () => {
                             transition: 'none'
                         }}
                     >
-                        <item.icon className="w-28 h-28 text-myBack-800 mb-3" /> {/* AUMENTADO: iconos más grandes y más margen */}
-                        <p className="text-3xl font-bold text-center text-myBack-800 leading-tight"> {/* AUMENTADO: texto más grande y bold */}
+                        <item.icon className="w-28 h-28 text-myBack-800 mb-3" /> 
+                        <p className="text-3xl font-bold text-center text-myBack-800 leading-tight">
                             {item.name}
                         </p>
                     </div>

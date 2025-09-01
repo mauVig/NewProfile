@@ -2,10 +2,6 @@
 
 
 @theme inline {
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
   --color-myBack-50: #fafafa;
   --color-myBack-100: #f2f2f2;
   --color-myBack-200: #e6e6e6;
@@ -36,6 +32,8 @@
   --color-myGray-800: #242424;
   --color-myGray-900: #121212;
   --color-myGray-950: #0a0a0a;
+
+  --myMaxWidth: 1800px;
 }
 
 @font-face {

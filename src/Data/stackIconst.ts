@@ -90,3 +90,24 @@ export const myStack = [
     icon: TbBrandVue,
   },
 ];
+
+export const myStackText = [
+  'HTML 5',
+  'CSS 3',
+  'JavaScript',
+  'TypeScript',
+  'React Js',
+  'Next js',
+  'React Native',
+  'Angular Js',
+  'Astro',
+  'Tailwind Css',
+  'Bootstrap',
+  'Node Js',
+  'Mongo Db',
+  'Express',
+  'Firebase',
+  'PhP',
+  'My SQL',
+  'Vue 3'
+];
