@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
 import Matter from 'matter-js';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 interface TechItem {
   name: string;
@@ -55,7 +55,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
   const techRef = useRef<HTMLDivElement | null>(null);
   const canvasContainerRef = useRef<HTMLDivElement | null>(null);
   const [effectStarted, setEffectStarted] = useState(false);
-  const [techComponents, setTechComponents] = useState<JSX.Element[]>([]);
+  const [techComponents, setTechComponents] = useState<ReactElement[]>([]);
 
   // Crear los componentes de tecnología
   useEffect(() => {
@@ -108,7 +108,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const width = containerRect.width;
-      const height = containerRect.height;
+      const height = containerRect.height - 16; 
 
       if (width <= 0 || height <= 0) return;
 
@@ -243,7 +243,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative z-[1] w-full h-full cursor-pointer text-center py-8 overflow-hidden"
+      className="relative z-[1] w-full h-full cursor-pointer text-center p-8 overflow-hidden"
       onClick={trigger === 'click' ? handleTrigger : undefined}
       onMouseEnter={trigger === 'hover' ? handleTrigger : undefined}
     >

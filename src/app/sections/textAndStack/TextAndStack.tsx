@@ -20,8 +20,9 @@ const TextAndStack = () => {
                     </ScrollReveal>
                 </div>            
             </div>
-            {/* <StackTecnh /> */}
-            <StackTechText />
+            <div className="max-w-[var(--myMaxWidth)] mx-auto">
+                <StackTechText />
+            </div>
         </div>
     )
 }
