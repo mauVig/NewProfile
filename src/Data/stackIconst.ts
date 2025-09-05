@@ -10,10 +10,10 @@ import {
   TbBrandPhp,
   TbBrandVue,
 } from 'react-icons/tb';
-import { SiMongodb, SiExpress, SiTypescript, SiAstro  } from 'react-icons/si';
+import { SiMongodb, SiExpress, SiTypescript, SiAstro, SiLaravel  } from 'react-icons/si';
 import { IoLogoNodejs } from 'react-icons/io';
 import { GrMysql } from 'react-icons/gr';
-import { FaAngular } from 'react-icons/fa';
+import { FaAngular, FaDocker  } from 'react-icons/fa';
 
 
 export const myStack = [
@@ -74,12 +74,20 @@ export const myStack = [
     icon: SiExpress,
   },
   {
+    name: 'Docker',
+    icon: FaDocker,
+  },
+  {
     name: 'Firebase',
     icon: TbBrandFirebase,
   },
   {
     name: 'PhP',
     icon: TbBrandPhp,
+  },
+  {
+    name: 'Laravel',
+    icon: SiLaravel,
   },
   {
     name: 'My SQL',
@@ -90,24 +98,4 @@ export const myStack = [
     icon: TbBrandVue,
   },
 ];
-
-export const myStackText = [
-  'HTML 5',
-  'CSS 3',
-  'JavaScript',
-  'TypeScript',
-  'React Js',
-  'Next js',
-  'React Native',
-  'Angular Js',
-  'Astro',
-  'Tailwind Css',
-  'Bootstrap',
-  'Node Js',
-  'Mongo Db',
-  'Express',
-  'Firebase',
-  'PhP',
-  'My SQL',
-  'Vue 3'
-];
+ 

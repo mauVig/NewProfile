@@ -4,27 +4,17 @@ import LightRays from "./components/LightRays";
 import RotatingText from "./components/RotatingText";
 
 const Header = () => {
-    const [windowHeight, setWindowHeight] = useState(0);
 
-    useEffect(() => {
-        const updateWindowHeight = () => {
-            setWindowHeight(window.innerHeight);
-        };
-        updateWindowHeight();
-        
-        window.addEventListener('resize', updateWindowHeight);
-        return () => window.removeEventListener('resize', updateWindowHeight);
-    }, []);
 
     return (
-        <header className={`w-full ${windowHeight > 800 ? 'min-h-svh' : 'min-h-[800px]'} min-h-svh bg-myBack-800 text-myGray-100 flex justify-center items-center h-full`}>
-            <div style={{ width: '100%', height: '100%', position: 'absolute'}}>
+        <header className={`w-full  min-h-[800px] bg-myBack-800 text-myGray-100 flex justify-center items-center h-full`}>
+            <div style={{ width: '100%', height: '800px', position: 'absolute'}}>
                 <LightRays
                     raysOrigin="top-center"
                     raysColor="#FCDDB8"
                     raysSpeed={1.35}
-                    lightSpread={7}
-                    rayLength={9}
+                    lightSpread={20}
+                    rayLength={10}
                     followMouse={true}
                     mouseInfluence={0.1}
                     noiseAmount={0.1}
@@ -48,7 +38,7 @@ const Header = () => {
                             staggerDuration={0.035}
                             splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                             transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                            rotationInterval={2500}
+                            rotationInterval={1900}
                         />
                     </div> 
                     <div className="flex gap-6 text-2xl mt-8">

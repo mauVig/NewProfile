@@ -19,6 +19,8 @@ interface ScrollRevealProps {
   // Nuevos parámetros para controlar la suavidad
   staggerDelay?: number;
   scrollDistance?: string;
+  // Nuevo parámetro para controlar cuándo empieza la animación
+  visibilityThreshold?: number;
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -30,13 +32,14 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   blurStrength = 4,
   containerClassName = "",
   textClassName = "",
-  rotationEnd = "bottom+=50% bottom", // Modificado para más scroll
-  wordAnimationEnd = "bottom+=100% bottom", // Modificado para más scroll
-  staggerDelay = 0.02, // Menor delay para más suavidad
-  scrollDistance = "bottom+=150% bottom", // Nueva prop para controlar distancia
+  rotationEnd = "bottom+=50% bottom",
+  wordAnimationEnd = "bottom+=100% bottom",
+  staggerDelay = 0.02,
+  scrollDistance = "bottom+=150% bottom",
+  visibilityThreshold = 20, // Nuevo parámetro: porcentaje de visibilidad para empezar
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
-
+  
   const splitText = useMemo(() => {
     const text = typeof children === "string" ? children : "";
     return text.split(/(\s+)/).map((word, index) => {
@@ -57,59 +60,63 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       scrollContainerRef && scrollContainerRef.current
         ? scrollContainerRef.current
         : window;
-
-    // Animación de rotación - MÁS SUAVE Y LARGA
+        
+    const startPoint = `top bottom-${9000 - visibilityThreshold}%`;
+    
     gsap.fromTo(
       el,
       { transformOrigin: "0% 50%", rotate: baseRotation },
       {
-        ease: "power2.out", // Cambiado de "none" a "power2.out" para más suavidad
+        ease: "power2.out",
         rotate: 0,
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: "top bottom-=10%", // Empieza un poco antes
+          start: startPoint, // Empieza cuando el threshold se cumple
           end: rotationEnd,
-          scrub: 1.5, // Agregado scrub con valor para más suavidad (antes era true)
+          scrub: 1.5,
+          // markers: true, // Descomenta para debug
         },
       }
     );
 
     const wordElements = el.querySelectorAll<HTMLElement>(".word");
 
-    // Animación de opacidad - MÁS SUAVE Y LARGA
+    // Animación de opacidad - Empieza cuando el elemento tiene la visibilidad deseada
     gsap.fromTo(
       wordElements,
-      { opacity: baseOpacity, willChange: "opacity, filter, transform" }, // Agregado más propiedades
+      { opacity: baseOpacity, willChange: "opacity, filter, transform" },
       {
-        ease: "power2.out", // Cambiado para más suavidad
+        ease: "power2.out",
         opacity: 1,
-        stagger: staggerDelay, // Usar la prop personalizable
+        stagger: staggerDelay,
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: "top bottom-=30%", // Empieza antes
-          end: scrollDistance, // Usar la nueva prop personalizable
-          scrub: 2, // Más suave (antes era true)
+          start: startPoint, // Empieza cuando el threshold se cumple
+          end: scrollDistance,
+          scrub: 2,
+          // markers: true, // Descomenta para debug
         },
       }
     );
 
-    // Animación de blur - MÁS SUAVE Y LARGA
+    // Animación de blur - Empieza cuando el elemento tiene la visibilidad deseada
     if (enableBlur) {
       gsap.fromTo(
         wordElements,
         { filter: `blur(${blurStrength}px)` },
         {
-          ease: "power2.out", // Más suavidad
+          ease: "power2.out",
           filter: "blur(0px)",
-          stagger: staggerDelay, // Usar la prop personalizable
+          stagger: staggerDelay,
           scrollTrigger: {
             trigger: el,
             scroller,
-            start: "top bottom-=30%", // Empieza antes
-            end: scrollDistance, // Usar la nueva prop personalizable
-            scrub: 2, // Más suave
+            start: startPoint, // Empieza cuando el threshold se cumple
+            end: scrollDistance,
+            scrub: 2,
+            // markers: true, // Descomenta para debug
           },
         }
       );
@@ -128,6 +135,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     blurStrength,
     staggerDelay,
     scrollDistance,
+    visibilityThreshold, // Agregar la nueva dependencia
   ]);
 
   return (

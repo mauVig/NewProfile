@@ -7,7 +7,7 @@ import TextAndStack from "./sections/textAndStack/TextAndStack";
 export default function Home() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Header />
       <TextAndStack />
       <Experience />

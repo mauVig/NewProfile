@@ -62,7 +62,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       exit = { y: "-120%", opacity: 0 },
       animatePresenceMode = "wait",
       animatePresenceInitial = false,
-      rotationInterval = 2000,
+      rotationInterval = 9000,
       staggerDuration = 0,
       staggerFrom = "first",
       loop = true,
@@ -204,7 +204,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
     return (
       <motion.span
         className={cn(
-          "flex flex-wrap whitespace-pre-wrap relative  bg-myOrange-500 text-black",
+          "flex flex-wrap whitespace-pre-wrap relative bg-myOrange-500 text-black",
           mainClassName
         )}
         {...rest}

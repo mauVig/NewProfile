@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import Matter from 'matter-js';
 import React, { ReactElement } from 'react';
+import TechCard from './TechCard';
 
 interface TechItem {
   name: string;
@@ -19,27 +20,7 @@ interface FallingTechProps {
   highlightTechs?: string[];
 }
 
-// Componente individual de tecnología
-const TechCard: React.FC<{
-  tech: TechItem;
-  iconSize: number;
-  isHighlighted: boolean;
-  index: number;
-}> = ({ tech, iconSize, isHighlighted, index }) => {
-  const IconComponent = tech.icon;
-  
-  return (
-    <div 
-      className={`tech-item inline-flex items-center gap-2 px-3 py-2 m-1 rounded-lg border-2 bg-myOrange-500 shadow-sm select-none cursor-pointer hover:shadow-md transition-shadow ${
-        isHighlighted ? 'border-cyan-500 bg-cyan-50 text-cyan-700' : 'border-gray-300'
-      }`}
-      data-tech-index={index}
-    >
-      <IconComponent size={iconSize} />
-      <span className="tech-name text-sm font-medium">{tech.name}</span>
-    </div>
-  );
-};
+
 
 const FallingTech: React.FC<FallingTechProps> = ({
   techStack = [],
@@ -89,7 +70,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
             observer.disconnect();
           }
         },
-        { threshold: 0.8 }
+        { threshold: 0.95 }
       );
       observer.observe(containerRef.current);
       return () => observer.disconnect();
