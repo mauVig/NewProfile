@@ -1,6 +1,5 @@
 import React from 'react'
 import ScrollReveal from './components/ScrollReveal'
-import StackTecnh from './components/StackTecnh'
 import StackTechText from './components/StackTechText'
 
 const TextAndStack = () => {
@@ -20,7 +19,7 @@ const TextAndStack = () => {
                     </ScrollReveal>
                 </div>            
             </div>
-            <div className="max-w-[var(--myMaxWidth)] mx-auto">
+            <div className="max-w-[var(--myMaxWidth)] mx-auto mt-8">
                 <StackTechText />
             </div>
         </div>

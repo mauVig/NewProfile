@@ -1,21 +1,19 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import Accenture from './components/Accenture';
+import Freelance from './components/freelance/Freelance';
+import ConteinerExperience from './components/ConteinerExperience';
 
-interface ExperienceProps {
-    // Add your props here if needed
-}
-
-const Experience: React.FC<ExperienceProps> = () => {
+const Experience: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const itemRefs = useRef<HTMLDivElement[]>([]);
-
-   
+    const separatorRef = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
         const container = containerRef.current;
         const section = sectionRef.current;
+        const separator = separatorRef.current;
+        
         if (!container || !section) return;
 
         // Calcular el ancho total del contenido horizontal
@@ -29,7 +27,11 @@ const Experience: React.FC<ExperienceProps> = () => {
         const handleScroll = () => {
             const containerRect = container.getBoundingClientRect();
             const { top } = containerRect;
-
+            
+            // Calcular el progreso del scroll de manera más precisa
+            const scrollProgress = Math.abs(top) / container.offsetHeight;
+            const clampedProgress = Math.min(Math.max(scrollProgress, 0), 1);
+            
             // Cuando el contenedor esté en vista, calcular el progreso del scroll
             if (top <= 0) {
                 const progress = Math.abs(top) / (scrollableWidth - viewportHeight);
@@ -37,8 +39,15 @@ const Experience: React.FC<ExperienceProps> = () => {
                 section.scrollLeft = scrollAmount;
             }
 
-            // Efectos de aparición para cada item de experiencia
-            itemRefs.current.forEach((item, index) => {
+            // Animar la imagen separadora basado en el scroll total
+            if (separator) {
+                const translateY = -clampedProgress * 3000;
+                separator.style.transform = `translateY(${translateY}px)`;
+                separator.style.transition = 'transform 0.05s';
+            }
+
+            // Efectos de aparición para cada item de experiencia con escala muy sutil
+            itemRefs.current.forEach((item) => {
                 if (!item) return;
                 const rect = item.getBoundingClientRect();
                 const isVisible = rect.left < window.innerWidth && rect.right > 0;
@@ -47,11 +56,12 @@ const Experience: React.FC<ExperienceProps> = () => {
                 const proximity = Math.max(0, 1 - centerDistance / maxDistance);
                 
                 const opacity = isVisible ? 1 : 0.3;
-                const scale = isVisible ? 0.9 + (proximity * 0.1) : 0.85;
-
+                // Escala muy sutil: de 0.95 a 1.0 exactamente
+                const scale = isVisible ? 0.98 + (proximity * 0.02) : 0.98;
+                
                 item.style.opacity = opacity.toString();
                 item.style.transform = `scale(${scale})`;
-                item.style.transition = 'opacity 0.6s ease-in-out, transform 0.6s ease-in-out';
+                item.style.transition = 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out';
             });
         };
 
@@ -60,46 +70,58 @@ const Experience: React.FC<ExperienceProps> = () => {
     }, []);
 
     return (
-        <div className="relative bg-myBack-800 text-myGray-300 pt-28" ref={containerRef}>
-            <div
-                ref={sectionRef}
-                className="sticky top-0 overflow-x-hidden"
-                 style={{ paddingLeft: '50vw' }}
-            >
-                <div className="inline-flex min-w-[300vw] px-8 gap-12  h-full">
-                    {/* Título inicial */}
-                    <div 
-                        ref={el => {
-                            if (el) itemRefs.current[0] = el;
-                        }}
-                        className="w-[400px] flex-shrink-0 opacity-30"
-                    >
-                        <h2 className="text-6xl font-bold text-white mb-4">
-                            Mi Experiencia
-                        </h2>
-                        <p className="text-xl text-gray-300">
-                            Desliza hacia abajo para explorar mi trayectoria profesional
-                        </p>
-                    </div>
-                    <Accenture />
-                    <div 
-                        className="w-[400px] flex-shrink-0  text-center"
-                    >
-                        <h3 className="text-4xl font-bold text-white mb-4">
-                            ¿Trabajamos juntos?
-                        </h3>
-                        <p className="text-xl text-gray-300">
-                            Estoy listo para el próximo desafío
-                        </p>
-                        <div className="mt-8">
-                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-                                Contactar
-                            </button>
+        <>  
+            <div className='bg-myBack-800 text-myGray-300 pt-28' id='experience'>
+                <div className='max-w-[var(--myMaxWidth)] mx-auto text-center' >
+                    <h2 className="text-6xl font-bold text-white mb-4">
+                        Mi Experiencia
+                    </h2>
+                    <p className="text-xl text-gray-300">
+                        Desliza hacia abajo para explorar mi trayectoria profesional
+                    </p>
+                </div>
+            </div>
+            <div className="relative bg-myBack-800 text-myGray-300 pt-28 title" ref={containerRef}>
+                <div
+                    ref={sectionRef}
+                    className="sticky top-0 overflow-x-hidden"
+                    style={{ paddingLeft: '10vw' }}
+                >
+                    <div className="inline-flex min-w-[10000px] px-8 h-full">
+                        <div
+                            className='mr-24'
+                        >
+                            <ConteinerExperience 
+                                company='Accenture' 
+                                width={1100} 
+                                img='/img/accImg.png' 
+                                alt='Imagen de la esquina del edificio de la empresa en en modo dibujitos'
+                            />
+                        </div>
+                        <div
+                            className='mr-24'
+                        >
+                            <ConteinerExperience 
+                                company='Loesen' 
+                                width={1600} 
+                                img='/img/losen.png' 
+                                alt='Imagen de que representa a una persona sentada en un escritorio trabajando con la página web de esta experiencia'
+                            />
+                        </div>
+                        <img 
+                            ref={separatorRef}
+                            src="/separate.png" 
+                            alt="Separador de fondos de negro a naranja claro" 
+                            className=''
+                        />
+                        <div className="bg-myOrange-700 text-myBack-800">
+                            <h2 className='text-6xl font-bold title mb-4 mt-8'>Freelance</h2>
+                            <Freelance />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

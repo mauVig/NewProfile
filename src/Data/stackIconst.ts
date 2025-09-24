@@ -34,7 +34,7 @@ export const myStack = [
     icon: SiTypescript,
   },
   {
-    name: 'React Js',
+    name: 'React',
     icon: TbBrandReactNative,
   },
   {

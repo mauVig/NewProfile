@@ -6,7 +6,7 @@ import TechCard from './TechCard';
 
 interface TechItem {
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType;
 }
 
 interface FallingTechProps {
@@ -19,8 +19,6 @@ interface FallingTechProps {
   iconSize?: number;
   highlightTechs?: string[];
 }
-
-
 
 const FallingTech: React.FC<FallingTechProps> = ({
   techStack = [],
@@ -35,10 +33,14 @@ const FallingTech: React.FC<FallingTechProps> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const techRef = useRef<HTMLDivElement | null>(null);
   const canvasContainerRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const mouseConstraintRef = useRef<any>(null);
+  const engineRef = useRef<any>(null);
+  
   const [effectStarted, setEffectStarted] = useState(false);
   const [techComponents, setTechComponents] = useState<ReactElement[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Crear los componentes de tecnología
   useEffect(() => {
     const components = techStack.map((tech, index) => {
       const isHighlighted = highlightTechs.includes(tech.name);
@@ -55,36 +57,74 @@ const FallingTech: React.FC<FallingTechProps> = ({
     setTechComponents(components);
   }, [techStack, iconSize, highlightTechs]);
 
-  // Trigger effects
+  const resetEffect = () => {
+    setEffectStarted(false);
+    
+    if (containerRef.current && (containerRef.current as any)._cleanup) {
+      (containerRef.current as any)._cleanup();
+    }
+    
+    if (techRef.current) {
+      const techElements = techRef.current.querySelectorAll('.tech-item');
+      techElements.forEach((elem) => {
+        const element = elem as HTMLElement;
+        element.style.position = '';
+        element.style.left = '';
+        element.style.top = '';
+        element.style.transform = '';
+        element.style.zIndex = '';
+      });
+    }
+  };
+
   useEffect(() => {
-    if (trigger === 'auto') {
+    if (!containerRef.current) return;
+
+    observerRef.current = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisible;
+        const nowVisible = entry.isIntersecting;
+        
+        setIsVisible(nowVisible);
+        
+        if (nowVisible && !wasVisible) {
+          if (trigger === 'scroll' || trigger === 'auto') {
+            setTimeout(() => setEffectStarted(true), 100);
+          }
+        }
+        
+        if (!nowVisible && wasVisible) {
+          resetEffect();
+        }
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '0px'
+      }
+    );
+
+    observerRef.current.observe(containerRef.current);
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [trigger, isVisible]);
+
+  useEffect(() => {
+    if (trigger === 'auto' && isVisible) {
       setEffectStarted(true);
       return;
     }
+  }, [trigger, isVisible]);
 
-    if (trigger === 'scroll' && containerRef.current) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setEffectStarted(true);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.95 }
-      );
-      observer.observe(containerRef.current);
-      return () => observer.disconnect();
-    }
-  }, [trigger]);
-
-  // Physics effect
   useEffect(() => {
-    if (!effectStarted || techComponents.length === 0) return;
+    if (!effectStarted || techComponents.length === 0 || !isVisible) return;
 
-    // Pequeño delay para asegurar que los elementos están renderizados
     const timeout = setTimeout(() => {
       const { Engine, Render, World, Bodies, Runner, Mouse, MouseConstraint } = Matter;
-
+      
       if (!containerRef.current || !canvasContainerRef.current || !techRef.current) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
@@ -94,6 +134,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
       if (width <= 0 || height <= 0) return;
 
       const engine = Engine.create();
+      engineRef.current = engine;
       engine.world.gravity.y = gravity;
 
       const render = Render.create({
@@ -107,7 +148,6 @@ const FallingTech: React.FC<FallingTechProps> = ({
         }
       });
 
-      // Boundaries
       const boundaryOptions = {
         isStatic: true,
         render: { fillStyle: 'transparent' }
@@ -123,7 +163,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
         const rect = elem.getBoundingClientRect();
         const x = rect.left - containerRect.left + rect.width / 2;
         const y = rect.top - containerRect.top + rect.height / 2;
-
+        
         const body = Bodies.rectangle(x, y, rect.width, rect.height, {
           render: { fillStyle: 'transparent' },
           restitution: 0.6,
@@ -131,7 +171,6 @@ const FallingTech: React.FC<FallingTechProps> = ({
           friction: 0.3
         });
 
-        // Velocidad inicial aleatoria
         Matter.Body.setVelocity(body, {
           x: (Math.random() - 0.5) * 3,
           y: (Math.random() - 0.5) * 2
@@ -142,7 +181,6 @@ const FallingTech: React.FC<FallingTechProps> = ({
         return { elem, body };
       });
 
-      // Posicionar elementos inicialmente
       techBodies.forEach(({ elem, body }) => {
         const element = elem as HTMLElement;
         element.style.position = 'absolute';
@@ -152,7 +190,6 @@ const FallingTech: React.FC<FallingTechProps> = ({
         element.style.zIndex = '10';
       });
 
-      // Mouse interaction
       const mouse = Mouse.create(containerRef.current);
       const mouseConstraint = MouseConstraint.create(engine, {
         mouse,
@@ -161,6 +198,64 @@ const FallingTech: React.FC<FallingTechProps> = ({
           render: { visible: false }
         }
       });
+
+      mouseConstraintRef.current = mouseConstraint;
+
+      const originalMouseDown = mouse.element.onmousedown;
+      const originalTouchStart = mouse.element.ontouchstart;
+
+      mouse.element.onmousedown = (e: MouseEvent) => {
+        const bodies = techBodies.map(tb => tb.body);
+        const mousePosition = { x: e.offsetX, y: e.offsetY };
+        
+        let hitBody = false;
+        bodies.forEach(body => {
+          const distance = Math.sqrt(
+            Math.pow(body.position.x - mousePosition.x, 2) + 
+            Math.pow(body.position.y - mousePosition.y, 2)
+          );
+          if (distance < 50) {
+            hitBody = true;
+          }
+        });
+
+        if (hitBody) {
+          if (originalMouseDown) originalMouseDown.call(mouse.element, e);
+        } else {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
+
+      mouse.element.ontouchstart = (e: TouchEvent) => {
+        if (!e.touches[0]) return;
+        
+        const rect = mouse.element.getBoundingClientRect();
+        const touch = e.touches[0];
+        const mousePosition = { 
+          x: touch.clientX - rect.left, 
+          y: touch.clientY - rect.top 
+        };
+        
+        const bodies = techBodies.map(tb => tb.body);
+        let hitBody = false;
+        bodies.forEach(body => {
+          const distance = Math.sqrt(
+            Math.pow(body.position.x - mousePosition.x, 2) + 
+            Math.pow(body.position.y - mousePosition.y, 2)
+          );
+          if (distance < 50) {
+            hitBody = true;
+          }
+        });
+
+        if (hitBody) {
+          if (originalTouchStart) originalTouchStart.call(mouse.element, e);
+        } else {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
 
       render.mouse = mouse;
 
@@ -177,8 +272,10 @@ const FallingTech: React.FC<FallingTechProps> = ({
       Runner.run(runner, engine);
       Render.run(render);
 
-      // Update loop
+      let animationFrame: number;
       const updateLoop = () => {
+        if (!isVisible) return;
+        
         techBodies.forEach(({ body, elem }) => {
           const { x, y } = body.position;
           const element = elem as HTMLElement;
@@ -186,24 +283,30 @@ const FallingTech: React.FC<FallingTechProps> = ({
           element.style.top = `${y}px`;
           element.style.transform = `translate(-50%, -50%) rotate(${body.angle}rad)`;
         });
+        
         Matter.Engine.update(engine);
-        requestAnimationFrame(updateLoop);
+        animationFrame = requestAnimationFrame(updateLoop);
       };
-
+      
       updateLoop();
 
-      // Cleanup function
       const cleanup = () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame);
+        }
         Render.stop(render);
         Runner.stop(runner);
         if (render.canvas && canvasContainerRef.current) {
-          canvasContainerRef.current.removeChild(render.canvas);
+          try {
+            canvasContainerRef.current.removeChild(render.canvas);
+          } catch (e) {
+            // Canvas ya removido
+          }
         }
         World.clear(engine.world, false);
         Engine.clear(engine);
       };
 
-      // Store cleanup in container for later use
       (containerRef.current as any)._cleanup = cleanup;
     }, 100);
 
@@ -213,10 +316,10 @@ const FallingTech: React.FC<FallingTechProps> = ({
         (containerRef.current as any)._cleanup();
       }
     };
-  }, [effectStarted, techComponents, gravity, wireframes, backgroundColor, mouseConstraintStiffness]);
+  }, [effectStarted, techComponents, gravity, wireframes, backgroundColor, mouseConstraintStiffness, isVisible]);
 
   const handleTrigger = () => {
-    if (!effectStarted && (trigger === 'click' || trigger === 'hover')) {
+    if (!effectStarted && (trigger === 'click' || trigger === 'hover') && isVisible) {
       setEffectStarted(true);
     }
   };
@@ -224,7 +327,8 @@ const FallingTech: React.FC<FallingTechProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative z-[1] w-full h-full cursor-pointer text-center p-8 overflow-hidden"
+      className="relative z-[1] w-full h-full text-center p-8 overflow-hidden"
+      // style={{ touchAction: 'pan-y' }}
       onClick={trigger === 'click' ? handleTrigger : undefined}
       onMouseEnter={trigger === 'hover' ? handleTrigger : undefined}
     >
@@ -241,4 +345,4 @@ const FallingTech: React.FC<FallingTechProps> = ({
   );
 };
 
-export default FallingTech;
+export default FallingTech
