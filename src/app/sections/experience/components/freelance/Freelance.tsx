@@ -5,7 +5,7 @@ const Freelance = () => {
   return (
     <>
         <h2 className='text-6xl font-bold title ml-44 mb-4 mt-8'>Freelance</h2>
-        <div className='flex gap-20 px-44'>
+        <div className='flex gap-20 pl-44 sm:pr-44 pr-4'>
           <ContentFreelance 
             urlLink='https://motionclinic.com.ar/'
             alt='Motion Clinic'

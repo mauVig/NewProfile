@@ -257,7 +257,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
                     </motion.span>
                   ))}
                   {wordObj.needsSpace && (
-                    <span className="whitespace-pre"> </span>
+                    <span className="whitespace-pre"></span>
                   )}
                 </span>
               );

@@ -6,7 +6,7 @@ import { HiMiniChatBubbleLeftEllipsis } from "react-icons/hi2";
 const Accenture: React.FC = () => {
     return (
         <>
-            <div className='flex justify-end w-[600px]'>
+            <div className='flex justify-end w-[400px] sm:w-[600px]'>
                 <span className='text-xl w-fit font-bold title mb-8 bg-myOrange-400 text-myGray-900 px-3 py-1 rounded-l-[100px] '>Experiencia destacada</span>
             </div>
             <div className='h-full flex items-center'>

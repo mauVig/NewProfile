@@ -112,12 +112,12 @@ const WhoAmI: React.FC = () => {
         <div className='text-myGray-300 w-2/3'>
           {/* Párrafo de introducción con estilo destacado */}
           <p className="mb-8 text-3xl font-bold leading-relaxed bg-gradient-to-r from-myOrange-400 to-myOrange-600 bg-clip-text text-transparent border-l-4 border-myOrange-500 pl-6 py-4">
-            Soy Mauro Vigliero, un desarrollador que viene del mundo de la música y la creatividad, ¡y logré que el código y el arte se lleven muy bien! ✨
+            Soy Mauro Vigliero, un desarrollador que viene del mundo de la música y la creatividad, ¡ Logré que el código y el arte se lleven muy bien! ✨
           </p>
 
           {/* Párrafo de historia con fondo sutil */}
           <p className="mb-8 text-xl leading-relaxed bg-myBack-700/50 rounded-lg p-6 border border-myGray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-myBack-700/70">
-            Mi historia arranca en la secundaria donde hice la especialización en programación aprendiendo con <span className="text-myOrange-400 font-semibold">Visual Basic</span>. Luego pasaron 10 años donde toqué en varias bandas como armoniquista, estudié locución en ISER y me recibí. En 2020, justo en la pandemia, estudié diseño y programación web en la escuela Da Vinci 📚 y desde ese entonces no paré de programar, encontrando una profesión que me hace feliz. 🎯 Hoy, cuento con <span className="text-myOrange-400 font-semibold">2 años de experiencia en el mundo corporativo</span> y <span className="text-myOrange-400 font-semibold">1 año y medio como freelance</span>.
+            Mi historia arranca en la secundaria donde hice la especialización en programación aprendiendo con <span className="text-myOrange-400 font-semibold">Visual Basic</span>. Luego pasaron 10 años donde toqué en varias bandas como armoniquista, estudié locución en ISER y me recibí. En 2020, justo en la pandemia, estudié diseño y programación web en la escuela Da Vinci 📚 y desde ese entonces no paré de programar, encontrando una profesión que me hace feliz. 🎯 Hoy, cuento con <span className="text-myOrange-400 font-semibold">2 años de experiencia en el mundo corporativo y tambien 1 año y medio como freelance</span>.
           </p>
 
           {/* Párrafo técnico con destacados especiales */}

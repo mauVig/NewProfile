@@ -34,6 +34,16 @@
   --color-myGray-950: #0a0a0a;
 
   --myMaxWidth: 1800px;
+
+  --breakpoint-3xs:  20rem; /* ~320px */
+  --breakpoint-xxs:  24rem; /* ~384px */
+  --breakpoint-xs:   32rem; /* ~512px */
+ /* 
+  --breakpoint-sm:   40rem;  ~640px 
+  --breakpoint-md:   48rem;  ~768px 
+  --breakpoint-lg:   64rem;  ~1024px 
+  --breakpoint-xl:   80rem;  ~1280px 
+  --breakpoint-2xl:  96rem;  ~1536px */
 }
 
 @font-face {

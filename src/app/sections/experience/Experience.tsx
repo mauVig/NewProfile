@@ -27,26 +27,11 @@ const Experience: React.FC = () => {
         const handleScroll = () => {
             const containerRect = container.getBoundingClientRect();
             const { top } = containerRect;
-            
-            // Calcular el progreso del scroll de manera más precisa
-            // const scrollProgress = Math.abs(top) / container.offsetHeight;
-            // const clampedProgress = Math.min(Math.max(scrollProgress, 0), 1);
-            
-            // Cuando el contenedor esté en vista, calcular el progreso del scroll
-            
             if (top <= 0) {
                 const progress = Math.abs(top) / (scrollableWidth - viewportHeight);
                 const scrollAmount = Math.min(progress * scrollableWidth, scrollableWidth);
                 section.scrollLeft = scrollAmount;
             }
-
-            // Animar la imagen separadora basado en el scroll total
-            // if (separator) {
-            //     const translateY = -clampedProgress * 3000;
-            //     separator.style.transform = `translateY(${translateY}px)`;
-            //     separator.style.transition = 'transform 0.05s';
-            // }
-
             // Efectos de aparición para cada item de experiencia con escala muy sutil
             itemRefs.current.forEach((item) => {
                 if (!item) return;
@@ -74,7 +59,7 @@ const Experience: React.FC = () => {
         <>  
             <div className='bg-myBack-800 text-myGray-300 pt-28' id='experience'>
                 <div className='max-w-[var(--myMaxWidth)] mx-auto text-center' >
-                    <h2 className="text-6xl font-bold text-white mb-4">
+                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
                         Mi Experiencia
                     </h2>
                     <p className="text-xl text-gray-300">
@@ -82,7 +67,7 @@ const Experience: React.FC = () => {
                     </p>
                 </div>
             </div>
-            <div className="relative bg-myBack-800 text-myGray-300 pt-28 title" ref={containerRef}>
+            <div className="relative bg-myBack-800 text-myGray-300 pt-14 title" ref={containerRef}>
                 <div
                     ref={sectionRef}
                     className="sticky top-0 overflow-x-hidden"
@@ -115,7 +100,7 @@ const Experience: React.FC = () => {
                              className='h-dvh '
                             alt="Separador de fondos de negro a naranja claro" 
                         />
-                        <div className="bg-myOrange-700 text-myBack-800 min-h-svh ">
+                        <div className="bg-myOrange-700 text-myBack-800 min-h-svh pb-8">
                             <Freelance />
                         </div>
                     </div>
