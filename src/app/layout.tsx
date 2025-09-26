@@ -21,13 +21,13 @@ export default function RootLayout({
         <meta name="description" content="Full Stack Developer | Frontend & Backend Developer | Passionate about creating efficient and scalable web solutions using modern technologies." />
         <meta property="og:title" content="Mauro Vigliero 😊" />
         <meta property="og:description" content="Full Stack Developer | Frontend & Backend Developer | Passionate about creating efficient and scalable web solutions using modern technologies." />
-        <meta property="og:image" content="/img/full-stack-mauro-vigliero.png" />
+        <meta property="og:image" content="/vercel.svg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://maurovigliero.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mauro Vigliero 😊" />
         <meta name="twitter:description" content="Full Stack Developer | Frontend & Backend Developer | Passionate about creating efficient and scalable web solutions using modern technologies." />
-        <meta name="twitter:image" content="/img/full-stack-mauro-vigliero.png" />
+        <meta name="twitter:image" content="/vercel.svg" />
       </head>
       <body>
         {children}
