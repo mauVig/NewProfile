@@ -99,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
   return (
     <>  
       {/* BOTÓN PARA ABRIR EL MODAL - SIEMPRE VISIBLE */}
-      <div className='overflow-hidden'>
+      <div className='h-14'>
         <button 
           onClick={() => setIsOpen(true)} 
           className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl"

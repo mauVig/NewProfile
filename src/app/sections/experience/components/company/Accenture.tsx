@@ -18,7 +18,7 @@ const Accenture: React.FC = () => {
                     </div>
                     
                     <div className='flex flex-col justify-start gap-4 '>
-                        <h4 className='title font-bold mt-8 text-2xl '>Proyectos</h4>
+                        <h4 className='title font-bold mt-8 mb-4 text-2xl'>Proyectos</h4>
                         <Modal title="Email marketing" pro={1}/>
                         <Modal title="Evaluar oportunidades de negocio" pro={2}/>
                     </div>

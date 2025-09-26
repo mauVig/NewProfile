@@ -1,5 +1,5 @@
 
-import WhoAmI from "./sections/experience/components/whoAmI/WhoAmI";
+import WhoAmI from "./sections/whoAmI/WhoAmI";
 import Experience from "./sections/experience/Experience";
 import NavBar from "./sections/header/components/NavBar";
 import Header from "./sections/header/Header";

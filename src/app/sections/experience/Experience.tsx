@@ -29,10 +29,11 @@ const Experience: React.FC = () => {
             const { top } = containerRect;
             
             // Calcular el progreso del scroll de manera más precisa
-            const scrollProgress = Math.abs(top) / container.offsetHeight;
-            const clampedProgress = Math.min(Math.max(scrollProgress, 0), 1);
+            // const scrollProgress = Math.abs(top) / container.offsetHeight;
+            // const clampedProgress = Math.min(Math.max(scrollProgress, 0), 1);
             
             // Cuando el contenedor esté en vista, calcular el progreso del scroll
+            
             if (top <= 0) {
                 const progress = Math.abs(top) / (scrollableWidth - viewportHeight);
                 const scrollAmount = Math.min(progress * scrollableWidth, scrollableWidth);
@@ -40,11 +41,11 @@ const Experience: React.FC = () => {
             }
 
             // Animar la imagen separadora basado en el scroll total
-            if (separator) {
-                const translateY = -clampedProgress * 3000;
-                separator.style.transform = `translateY(${translateY}px)`;
-                separator.style.transition = 'transform 0.05s';
-            }
+            // if (separator) {
+            //     const translateY = -clampedProgress * 3000;
+            //     separator.style.transform = `translateY(${translateY}px)`;
+            //     separator.style.transition = 'transform 0.05s';
+            // }
 
             // Efectos de aparición para cada item de experiencia con escala muy sutil
             itemRefs.current.forEach((item) => {
@@ -87,9 +88,9 @@ const Experience: React.FC = () => {
                     className="sticky top-0 overflow-x-hidden"
                     style={{ paddingLeft: '10vw' }}
                 >
-                    <div className="inline-flex min-w-[10000px] px-8 h-full">
+                    <div className="inline-flex px-8 h-full">
                         <div
-                            className='mr-24'
+                            className='mr-24 min-w-fit'
                         >
                             <ConteinerExperience 
                                 company='Accenture' 
@@ -99,7 +100,7 @@ const Experience: React.FC = () => {
                             />
                         </div>
                         <div
-                            className='mr-24'
+                            className='mr-44 min-w-fit'
                         >
                             <ConteinerExperience 
                                 company='Loesen' 
@@ -111,11 +112,10 @@ const Experience: React.FC = () => {
                         <img 
                             ref={separatorRef}
                             src="/separate.png" 
+                             className='h-dvh '
                             alt="Separador de fondos de negro a naranja claro" 
-                            className=''
                         />
-                        <div className="bg-myOrange-700 text-myBack-800">
-                            <h2 className='text-6xl font-bold title mb-4 mt-8'>Freelance</h2>
+                        <div className="bg-myOrange-700 text-myBack-800 min-h-svh ">
                             <Freelance />
                         </div>
                     </div>

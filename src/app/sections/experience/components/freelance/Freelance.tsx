@@ -3,7 +3,9 @@ import ContentFreelance from './ContentFreelance';
 
 const Freelance = () => {
   return (
-        <div className='flex gap-20 ml-3 mr-44'>
+    <>
+        <h2 className='text-6xl font-bold title ml-44 mb-4 mt-8'>Freelance</h2>
+        <div className='flex gap-20 px-44'>
           <ContentFreelance 
             urlLink='https://motionclinic.com.ar/'
             alt='Motion Clinic'
@@ -49,6 +51,7 @@ const Freelance = () => {
             urlImage='/img/pink.jpg'
           />
         </div> 
+    </>
   );
 };
 

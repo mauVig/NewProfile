@@ -23,14 +23,14 @@ const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, a
       href={urlLink}
       target="_blank" 
       rel="noopener noreferrer"
-      className='w-[600px] border-4 border-myBack-800 rounded-[20px] overflow-hidden hover:rounded-t-none transition-all duration-300 hover:shadow-lg shadow-myBack-800 hover:cursos-pointer'>
+      className='w-[500px] border-4 border-myBack-800 rounded-[20px] overflow-hidden hover:rounded-t-none transition-all duration-300 hover:shadow-lg shadow-myBack-800 hover:cursos-pointer'>
       <Image src={urlImage} alt={alt} height={400} width={600} />
        <div className='p-8'>
           <div>
             <h3 className='text-4xl font-bold title mb-8'>{title}</h3>
           </div>
-             <div className='relative '>
-                <HiMiniChatBubbleLeftEllipsis className='absolute text-2xl mt-2' />
+             <div className='relative  min-h-[130px]'>
+                <HiMiniChatBubbleLeftEllipsis className='absolute text-2xl mt-1' />
                 <p className='text-2xl mb-6 italic indent-8'>{description}</p>
             </div>
             <div className='flex flex-col justify-start gap-4'>

@@ -1,11 +1,11 @@
 'use client';
-import { useState, useEffect } from "react";
+import { IoLogoLinkedin } from "react-icons/io";
 import LightRays from "./components/LightRays";
 import RotatingText from "./components/RotatingText";
+import SplitText from "./components/SplitText";
 
 const Header = () => {
-
-
+    
     return (
         <header className={`w-full  min-h-[800px] bg-myBack-800 text-myGray-100 flex justify-center items-center h-full`}>
             <div style={{ width: '100%', height: '800px', position: 'absolute'}}>
@@ -19,17 +19,29 @@ const Header = () => {
                     mouseInfluence={0.1}
                     noiseAmount={0.1}
                     distortion={0.05}
-                    className="custom-rays"
                 />
             </div>
-            
             <div className="container mx-auto px-4 ">
-                <div className="flex flex-col justify-center items-center gap-6  title font-semibold relative z-20">
-                    <h1 className="text-7xl">Soy Mauro Vigliero</h1>
+                <div className="flex flex-col justify-center items-center gap-6 title font-semibold relative z-20">
+                    {/* <h1 className="text-[14rem]">Soy_Mauro</h1> */}
+                    <SplitText
+                        text="Soy_Mauro"
+                        className="text-[14rem]"
+                        delay={150}
+                        duration={0.9}
+                        ease="power3.out"
+                        splitType="chars"
+                        from={{ opacity: 0, y: 40 }}
+                        to={{ opacity: 1, y: 0 }}
+                        threshold={0.1}
+                        rootMargin="-100px"
+                        textAlign="center"
+                        tag="h1"
+                    />
                     <div className="flex justify-center items-center text-5xl">
                         <h2>Desarrollador</h2>
                         <RotatingText
-                            texts={['Full-stack', 'Front-end', 'Back-end']}
+                            texts={['Front-end','Full-stack', 'Back-end']}
                             mainClassName="px-3 overflow-hidden py-2 justify-center rounded-lg text-myBack-800 ml-4 w-[270px]"
                             staggerFrom={"last"}
                             initial={{ y: "100%" }}
@@ -41,7 +53,7 @@ const Header = () => {
                             rotationInterval={3000}
                         />
                     </div> 
-                    <div className="flex gap-6 text-2xl mt-8">
+                    <div className="flex gap-6 text-2xl mt-8 h-15">
                         <button 
                             className="bg-myGray-700 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer"
                         >
@@ -54,7 +66,22 @@ const Header = () => {
                             <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
                             ir a Proyectos
                         </button>
-                    </div>                      
+                    </div> 
+                    <div className="h-15 text-xl">
+                        <a 
+                            href="https://www.linkedin.com/in/maurovigliero/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            > 
+                            <button 
+                                className="bg-myGray-700 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex items-center gap-3"
+                            >
+                                <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                                <IoLogoLinkedin size={28} />
+                                Linkedin 
+                            </button>
+                        </a>
+                    </div>                     
                 </div>   
             </div>
         </header>
