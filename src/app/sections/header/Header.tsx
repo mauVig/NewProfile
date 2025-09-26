@@ -3,6 +3,7 @@ import { IoLogoLinkedin } from "react-icons/io";
 import LightRays from "./components/LightRays";
 import RotatingText from "./components/RotatingText";
 import SplitText from "./components/SplitText";
+import { MdDownloadForOffline, MdOutlineWork } from "react-icons/md";
 
 const Header = () => {
     
@@ -52,31 +53,42 @@ const Header = () => {
                             rotationInterval={3000}
                         />
                     </div> 
-                    <div className="flex flex-col xxs:flex-row gap-6  sm:text-lg md:text-xl lg:text-2xl mt-8  w-full xxs:w-fit xxs:h-15">
-                        <button 
-                            className="bg-myGray-700  text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer"
+                    <div className="flex flex-col xs:flex-row gap-6 mt-8 sm:text-lg md:text-xl lg:text-2xl w-full xxs:w-fit xs:h-15">
+                        <a 
+                            href="/cv/CV-Mauro-Vigliero-Desarrollador.pdf" 
+                            download="CV-Mauro-Vigliero-Desarrollador.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
-                            <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-                            Descargar CV
-                        </button>
-                        <button
-                            className="bg-myGray-700 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer"
-                        >
-                            <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-                            ir a Proyectos
-                        </button>
+                            <button 
+                                className="bg-myGray-700  text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex justify-center items-center gap-3 w-full"
+                            >
+                                <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex  h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)] w-full"></span>
+                                <MdDownloadForOffline size={28} />  
+                                Descargar CV
+                            </button>
+                        </a>
+                        <a href="#experience">
+                            <button
+                                className="bg-myGray-700 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex justify-center items-center gap-3 w-full"
+                            >
+                                <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                                <MdOutlineWork size={28} />
+                                ir a Proyectos
+                            </button>
+                        </a>
                     </div> 
                     <div className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xxs:w-fit">
                         <a 
                             href="https://www.linkedin.com/in/maurovigliero/" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className=""
+                            className=" w-full"
                             > 
                             <button 
                                 className="bg-myGray-700 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer  items-center w-full gap-3 flex justify-center"
                             >
-                                <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                                <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex  h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)] w-full"></span>
                                 <IoLogoLinkedin size={28} />
                                 Linkedin 
                             </button>

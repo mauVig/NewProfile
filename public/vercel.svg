@@ -1,1 +1,19 @@
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.32 27.16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #eebd81;
+        font-family: Lato-Bold, Lato;
+        font-size: 25.07px;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #242424;
+      }
+    </style>
+  </defs>
+  <rect class="cls-2" x="0" y="-.18" width="27.38" height="27.38"/>
+  <text class="cls-1" transform="translate(2.24 21.58)"><tspan x="0" y="0">M</tspan></text>
+</svg>

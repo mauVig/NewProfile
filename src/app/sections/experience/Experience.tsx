@@ -67,7 +67,7 @@ const Experience: React.FC = () => {
                     </p>
                 </div>
             </div>
-            <div className="relative bg-myBack-800 text-myGray-300 pt-14 title" ref={containerRef}>
+            <div className="relative bg-myBack-800 text-myGray-300  title" ref={containerRef}>
                 <div
                     ref={sectionRef}
                     className="sticky top-0 overflow-x-hidden"

@@ -34,7 +34,7 @@ const WhoAmI: React.FC = () => {
         const totalProgress = Math.abs(top) / container.offsetHeight;
         
         // Agrandar más rápido para alcanzar límites en menos scroll
-        const scale = 1 + (totalProgress * 6); // Reducido para alcanzar límites más rápido
+        const scale = 1 + (totalProgress * 3); // Reducido para alcanzar límites más rápido
 
         if (top <= 0 && top > -container.offsetHeight * 0.8) {
           
@@ -109,7 +109,7 @@ const WhoAmI: React.FC = () => {
         </div>
       </div>
       <div className="max-w-[var(--myMaxWidth)] mx-auto px-4 pb-16 text-lg leading-relaxed">
-        <div className='text-myGray-300 w-2/3'>
+        <div className='text-myGray-300 sm:w-2/3'>
           {/* Párrafo de introducción con estilo destacado */}
           <p className="mb-8 text-3xl font-bold leading-relaxed bg-gradient-to-r from-myOrange-400 to-myOrange-600 bg-clip-text text-transparent border-l-4 border-myOrange-500 pl-6 py-4">
             Soy Mauro Vigliero, un desarrollador que viene del mundo de la música y la creatividad, ¡ Logré que el código y el arte se lleven muy bien! ✨
@@ -143,7 +143,7 @@ const WhoAmI: React.FC = () => {
                 rel="noopener noreferrer"
               > 
                 <button 
-                    className="bg-myGray-800 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex items-center gap-3"
+                    className="bg-myGray-800 text-myOrange-400 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex items-center gap-3"
                 >
                     <span className="bg-red-200 shadow-red-200 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
                     <IoLogoLinkedin size={30} />
