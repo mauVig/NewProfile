@@ -12,7 +12,7 @@ const Experience: React.FC = () => {
     useEffect(() => {
         const container = containerRef.current;
         const section = sectionRef.current;
-        const separator = separatorRef.current;
+        // const separator = separatorRef.current; // Variable removida para evitar warning
         
         if (!container || !section) return;
 

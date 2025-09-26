@@ -3,11 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import Matter from 'matter-js';
 import React, { ReactElement } from 'react';
 import TechCard from './TechCard';
-
-interface TechItem {
-  name: string;
-  icon: React.ComponentType;
-}
+import { TechItem } from '../../../types';
 
 interface FallingTechProps {
   techStack?: TechItem[];
@@ -20,6 +16,11 @@ interface FallingTechProps {
   highlightTechs?: string[];
 }
 
+// Tipo extendido para el contenedor con cleanup
+interface ExtendedHTMLDivElement extends HTMLDivElement {
+  _cleanup?: () => void;
+}
+
 const FallingTech: React.FC<FallingTechProps> = ({
   techStack = [],
   trigger = 'auto',
@@ -30,12 +31,12 @@ const FallingTech: React.FC<FallingTechProps> = ({
   iconSize = 24,
   highlightTechs = []
 }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const techRef = useRef<HTMLDivElement | null>(null);
   const canvasContainerRef = useRef<HTMLDivElement | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const mouseConstraintRef = useRef<any>(null);
-  const engineRef = useRef<any>(null);
+  const mouseConstraintRef = useRef<Matter.MouseConstraint | null>(null);
+  const engineRef = useRef<Matter.Engine | null>(null);
   
   const [effectStarted, setEffectStarted] = useState(false);
   const [techComponents, setTechComponents] = useState<ReactElement[]>([]);
@@ -60,8 +61,9 @@ const FallingTech: React.FC<FallingTechProps> = ({
   const resetEffect = () => {
     setEffectStarted(false);
     
-    if (containerRef.current && (containerRef.current as any)._cleanup) {
-      (containerRef.current as any)._cleanup();
+    const extendedContainer = containerRef.current as ExtendedHTMLDivElement;
+    if (extendedContainer && extendedContainer._cleanup) {
+      extendedContainer._cleanup();
     }
     
     if (techRef.current) {
@@ -299,21 +301,27 @@ const FallingTech: React.FC<FallingTechProps> = ({
         if (render.canvas && canvasContainerRef.current) {
           try {
             canvasContainerRef.current.removeChild(render.canvas);
-          } catch (e) {
-            // Canvas ya removido
+          } catch {
+            // Canvas ya removido - variable 'e' removida para evitar warning
           }
         }
         World.clear(engine.world, false);
         Engine.clear(engine);
       };
 
-      (containerRef.current as any)._cleanup = cleanup;
+      // Asignar función cleanup al contenedor
+      const extendedContainer = containerRef.current as ExtendedHTMLDivElement;
+      if (extendedContainer) {
+        extendedContainer._cleanup = cleanup;
+      }
     }, 100);
 
     return () => {
       clearTimeout(timeout);
-      if (containerRef.current && (containerRef.current as any)._cleanup) {
-        (containerRef.current as any)._cleanup();
+      // Capturar el valor actual del ref para evitar warning de React hooks
+      const currentContainer = containerRef.current as ExtendedHTMLDivElement;
+      if (currentContainer && currentContainer._cleanup) {
+        currentContainer._cleanup();
       }
     };
   }, [effectStarted, techComponents, gravity, wireframes, backgroundColor, mouseConstraintStiffness, isVisible]);

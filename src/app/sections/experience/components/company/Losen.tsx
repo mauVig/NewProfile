@@ -13,7 +13,7 @@ const Loesen: React.FC = () => {
                     <h3 className='text-5xl font-bold title mb-8'>Loesen</h3>
                     <div className='relative'>
                         <HiMiniChatBubbleLeftEllipsis className='absolute text-2xl mt-2' />
-                        <p className='text-2xl mb-6 italic indent-8'>"Este fue mi primer trabajo como desarrollador, el cual le tengo gran cariño. Lamentablemente la empresa no prosperó, pero siempre voy a tener en mi recuerdo esta gran experiencia"</p>
+                        <p className='text-2xl mb-6 italic indent-8'>&ldquo;Este fue mi primer trabajo como desarrollador, el cual le tengo gran cariño. Lamentablemente la empresa no prosperó, pero siempre voy a tener en mi recuerdo esta gran experiencia&rdquo;</p>
                     </div>
                     
                     <div className='flex flex-col justify-start gap-4 mt-6'>
