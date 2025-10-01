@@ -12,7 +12,7 @@ const Freelance = () => {
   return (
     <>
       <div className="text-myBack-800 min-h-svh pb-28">
-        <div className="max-w-[var(--myMaxWidth)] mx-auto px-8">
+        <div className="max-w-[var(--myMaxWidth)] mx-auto px-2 xxs:px-8">
           <h2 className=' font-bold title  mb-4 pt-28 text-[clamp(2.3rem,6vw,3.75rem)]'>Freelance</h2>
           <div className='flex gap-20'>
             <Swiper 
@@ -47,7 +47,7 @@ const Freelance = () => {
                 },
                 // Cuando la pantalla es < 480px
                 0: {
-                  slidesPerView: 1,
+                  slidesPerView: 1.1,
                   spaceBetween: 6,
                 }
               }}
