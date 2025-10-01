@@ -1,5 +1,5 @@
 import TechCard from '@/app/sections/textAndStack/components/TechCard';
-import { myStack } from '@/Data/stackIconst';
+import { myStack } from '@/Data/globalData';
 import Image from 'next/image';
 import React from 'react';
 import { HiMiniChatBubbleLeftEllipsis } from 'react-icons/hi2';
@@ -23,7 +23,7 @@ const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, a
       href={urlLink}
       target="_blank" 
       rel="noopener noreferrer"
-      className='w-[500px] border-4 border-myBack-800 rounded-[20px] overflow-hidden hover:rounded-t-none transition-all duration-300 hover:shadow-lg shadow-myBack-800 hover:cursos-pointer'>
+      className=' rounded-[20px] overflow-hidden hover:rounded-t-none transition-all duration-300 hover:shadow-l hover:cursos-pointer'>
       <Image src={urlImage} alt={alt} height={400} width={600} />
        <div className='p-8'>
           <div>

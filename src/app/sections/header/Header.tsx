@@ -22,11 +22,13 @@ const Header = () => {
                     distortion={0.05}
                 />
             </div>
+            {/* text-[clamp(1.3rem,4vw,3rem)] */}
             <div className="mx-auto px-4 ">
                 <div className="flex flex-col justify-center items-start xxs:items-center gap-6 title font-semibold relative z-20">
                     <SplitText
                         text="Soy_Mauro"
-                        className="text-4xl 3xs:text-5xl xxs:text-6xl xs:text-7xl sm:text-8xl md:text-9xl mb-8 lg:text-[10rem] xl:text-[14rem]"
+                        // className="text-4xl 3xs:text-5xl xxs:text-6xl xs:text-7xl sm:text-8xl md:text-9xl mb-8 lg:text-[10rem] xl:text-[14rem]"
+                        className="text-[clamp(1.3rem,14vw,14rem)] "
                         delay={150}
                         duration={0.9}
                         ease="power3.out"
@@ -38,11 +40,11 @@ const Header = () => {
                         textAlign="center"
                         tag="h1"
                     />
-                    <div className="flex justify-center items-center w-full text-3xl md:text-3xl lg:text-5xl">
+                    <div className="flex justify-center items-center w-full text-[clamp(1.3rem,4.6vw,2rem)]">
                         <h2 className="hidden xs:block ">Desarrollador</h2>
                         <RotatingText
                             texts={['Front-end','Full-stack', 'Back-end']}
-                            mainClassName="px-3 overflow-hidden py-2 justify-center rounded-lg text-myBack-800 xxs:ml-4 lg:w-[270px]"
+                            mainClassName="px-3 overflow-hidden py-2 justify-center rounded-lg text-myBack-800 w-full xs:ml-4 xs:w-[180px]"
                             staggerFrom={"last"}
                             initial={{ y: "100%" }}
                             animate={{ y: 0 }}
@@ -53,7 +55,7 @@ const Header = () => {
                             rotationInterval={3000}
                         />
                     </div> 
-                    <div className="flex flex-col xs:flex-row gap-6 mt-8 sm:text-lg md:text-xl lg:text-2xl w-full xxs:w-fit xs:h-15">
+                    <div className="flex flex-col xs:flex-row gap-6 mt-8 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit xs:h-15">
                         <a 
                             href="/cv/CV-Mauro-Vigliero-Desarrollador.pdf" 
                             download="CV-Mauro-Vigliero-Desarrollador.pdf"
@@ -78,7 +80,7 @@ const Header = () => {
                             </button>
                         </a>
                     </div> 
-                    <div className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xxs:w-fit">
+                    <div className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit">
                         <a 
                             href="https://www.linkedin.com/in/maurovigliero/" 
                             target="_blank" 

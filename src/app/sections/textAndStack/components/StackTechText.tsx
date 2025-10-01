@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { myStack } from '@/Data/stackIconst'
+import { myStack } from '@/Data/globalData'
 import FallingTech from './FallingTech'
 import { BsArrowDownCircleFill } from 'react-icons/bs'
 

@@ -6,7 +6,7 @@ const TextAndStack = () => {
     return (
         <div className='bg-myOrange-700 pb-28 pt-14'>
             <div className='flex justify-center items-center text-myBack-800 p-4 '>
-                <div className='max-w-[var(--myMaxWidth)]'>
+                <div className='max-w-[var(--myMaxWidth)] px-8'>
                     <ScrollReveal
                         baseOpacity={0}
                         enableBlur={true}

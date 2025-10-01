@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Mauro Vigliero 😊",
@@ -23,7 +24,7 @@ export default function RootLayout({
         <meta property="og:description" content="Full Stack Developer | Frontend & Backend Developer | Passionate about creating efficient and scalable web solutions using modern technologies." />
         <meta property="og:image" content="/vercel.svg" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://maurovigliero.com" />
+        <meta property="og:url" content="https://maurovigliero.com.ar" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mauro Vigliero 😊" />
         <meta name="twitter:description" content="Full Stack Developer | Frontend & Backend Developer | Passionate about creating efficient and scalable web solutions using modern technologies." />
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <Analytics />
       </body>
     </html>
   );

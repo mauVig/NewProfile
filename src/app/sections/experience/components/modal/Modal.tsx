@@ -15,6 +15,21 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
   const modalRef = useRef(null);
   const contentRef = useRef(null);
 
+  const renderTitle = () => {
+    // Si el título contiene <br>, lo separamos y aplicamos clases responsive
+    if (title.includes('<br')) {
+      const parts = title.split(/<br[^>]*>/);
+      return (
+        <>
+          {parts[0]}
+          <br className="xxs:hidden" />
+          {parts[1]}
+        </>
+      );
+    }
+    return title;
+  };
+
   useEffect(() => {
     if (isOpen) {
       // Deshabilitar scroll del body cuando se abre el modal
@@ -102,10 +117,11 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
       <div className='h-14'>
         <button 
           onClick={() => setIsOpen(true)} 
-          className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl"
+          className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl text-left truncate"
+          style={{ fontSize: 'clamp(.875rem, 2.5vw, 1.3rem)' }}
         >
           <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-          {title}
+          {renderTitle()}
         </button>  
       </div>
 
@@ -140,7 +156,6 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
             > 
               {pro === 1 && <ModalContentPro1 />}
               {pro === 2 && <ModalContentPro2 />}
-              {pro === 3 && <ModalContentPro2 />}
             </div>
           </motion.div>
         </div>
