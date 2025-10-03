@@ -16,7 +16,7 @@ const Experience: React.FC = () => {
                 </div>
                 <div className="xlg:grid grid-cols-2 gap-8">
                     <ContCompany 
-                        img='/img/accImg.png' 
+                        img='/img/accImg.webp' 
                         alt='Imagen de la esquina del edificio de la empresa en en modo dibujitos'
                         company='Accenture' 
                         comentary="Durante mis 2 años en la empresa, participé en proyectos innovadores que me permitieron crecer profesionalmente y colaborar con equipos excepcionales."
@@ -26,7 +26,7 @@ const Experience: React.FC = () => {
                     </ContCompany>
 
                     <ContCompany 
-                        img='/img/losen.png' 
+                        img='/img/losen.webp' 
                         alt='Imagen de que representa a una persona sentada en un escritorio trabajando con la página web de esta experiencia'
                         company='Loesen' 
                         comentary="Este fue mi primer trabajo como desarrollador, el cual le tengo gran cariño. Lamentablemente la empresa no prosperó, pero siempre voy a tener en mi recuerdo esta gran experiencia."

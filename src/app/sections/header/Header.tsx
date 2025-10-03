@@ -1,4 +1,7 @@
 'use client';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { motion } from "motion/react";
 import { IoLogoLinkedin } from "react-icons/io";
 import LightRays from "./components/LightRays";
 import RotatingText from "./components/RotatingText";
@@ -7,6 +10,45 @@ import { MdDownloadForOffline, MdOutlineWork } from "react-icons/md";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 
 const Header = () => {
+    const headerRef = useRef<HTMLElement>(null);
+    const h2Ref = useRef<HTMLHeadingElement>(null);
+    const button1Ref = useRef<HTMLAnchorElement>(null);
+    const button2Ref = useRef<HTMLAnchorElement>(null);
+    const linkedinRef = useRef<HTMLDivElement>(null);
+    const arrowRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const isMobile = window.innerWidth <= 512;
+        const tl = gsap.timeline({ delay: 1.2 });
+
+        // Fade-in secuencial para todos los elementos
+        tl.fromTo(h2Ref.current, 
+            { opacity: 0, y: 30 }, 
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+        )
+        // Pausa para esperar que termine el RotatingText (delay 2.0 + 0.5 + duración de animación)
+        .to({}, { duration: 1.2 }); // Esperar ~1.3s para que termine RotatingText
+
+        // Animación condicional para botones según el tamaño de pantalla
+        if (isMobile) {
+            // En móviles (≤512px): botones aparecen uno por uno
+            tl.fromTo([button1Ref.current, button2Ref.current, linkedinRef.current], 
+                { opacity: 0, y: 30, scale: 0.95 }, 
+                { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.3, ease: "power2.out" }
+            );
+        } else {
+            // En pantallas grandes (>512px): botones aparecen juntos
+            tl.fromTo([button1Ref.current, button2Ref.current, linkedinRef.current], 
+                { opacity: 0, y: 30, scale: 0.95 }, 
+                { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power2.out" }
+            );
+        }
+
+        tl.fromTo(arrowRef.current, 
+            { opacity: 0, y: 20 }, 
+            { opacity: 1, y: 0, duration: 0.8, ease: "bounce.out" }
+        );
+    }, []);
     
     return (
         <header className={`w-full min-h-svh bg-myBack-800 text-myGray-100 flex justify-center items-center h-full relative`}>
@@ -23,7 +65,7 @@ const Header = () => {
                     distortion={0.05}
                 />
             </div>
-            {/* text-[clamp(1.3rem,4vw,3rem)] */}
+
             <div className="mx-auto px-4 ">
                 <div className="flex flex-col justify-center items-start xxs:items-center gap-6 title font-semibold relative z-20">
                     <SplitText
@@ -40,8 +82,13 @@ const Header = () => {
                         textAlign="center"
                         tag="h1"
                     />
-                    <div className="flex justify-center items-center w-full text-[clamp(1.7rem,5.5vw,2rem)]">
-                        <h2 className="hidden xs:block ">Desarrollador</h2>
+                    <motion.div 
+                        className="flex justify-center items-center w-full text-[clamp(1.7rem,5.5vw,2rem)]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.0, duration: 0.8 }}
+                    >
+                        <h2 ref={h2Ref} className="hidden xs:block" style={{ opacity: 0 }}>Desarrollador</h2>
                         <RotatingText
                             texts={['Front-end','Full-stack', 'Back-end']}
                             mainClassName="px-3 overflow-hidden py-2 justify-center rounded-lg text-myBack-800 w-full xs:ml-4 xs:w-[180px]"
@@ -51,16 +98,18 @@ const Header = () => {
                             exit={{ y: "-190%" }}
                             staggerDuration={0.035}
                             splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-                            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                            transition={{ type: "spring", damping: 30, stiffness: 400, delay: 0.5 }}
                             rotationInterval={3000}
                         />
-                    </div> 
+                    </motion.div> 
                     <div className="flex flex-col xs:flex-row gap-6 mt-8 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit xs:h-15">
                         <a 
+                            ref={button1Ref}
                             href="/cv/CV-Mauro-Vigliero-Desarrollador.pdf" 
                             download="CV-Mauro-Vigliero-Desarrollador.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
+                            style={{ opacity: 0 }}
                         >
                             <button 
                                 className="bg-myGray-700  text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex justify-center items-center gap-3 w-full"
@@ -70,7 +119,7 @@ const Header = () => {
                                 Descargar CV
                             </button>
                         </a>
-                        <a href="#experience">
+                        <a ref={button2Ref} href="#experience" style={{ opacity: 0 }}>
                             <button
                                 className="bg-myGray-700 text-myGray-300 border border-myGray-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer flex justify-center items-center gap-3 w-full"
                             >
@@ -80,7 +129,7 @@ const Header = () => {
                             </button>
                         </a>
                     </div> 
-                    <div className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit">
+                    <div ref={linkedinRef} className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit" style={{ opacity: 0 }}>
                         <a 
                             href="https://www.linkedin.com/in/maurovigliero/" 
                             target="_blank" 
@@ -98,7 +147,7 @@ const Header = () => {
                     </div>                     
                 </div>   
             </div>
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-70">
+            <div ref={arrowRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-70" style={{ opacity: 0 }}>
                 <BsArrowDownCircleFill size={40} className='text-myGray-300'/>
             </div>
         </header>

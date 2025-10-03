@@ -115,7 +115,7 @@ export const freelanceProjects = [
         'JavaScript'
       ],
       gitHubUrl:'https://github.com/mauVig/motionClinic/tree/main',
-      urlImage: '/img/motion.jpg'
+      urlImage: '/img/motion.webp'
     },
     {
       urlLink: 'https://adviters.com/en',
@@ -132,7 +132,7 @@ export const freelanceProjects = [
         'JavaScript'
       ],
       gitHubUrl:'https://github.com/mauVig/Adviter',
-      urlImage: '/img/adviters.jpg'
+      urlImage: '/img/adviters.webp'
     },
     {
       urlLink: 'https://lifeispink.org/',
@@ -145,6 +145,22 @@ export const freelanceProjects = [
         'JavaScript'
       ],
       gitHubUrl:'https://github.com/mauVig/Pink',
-      urlImage: '/img/pink.jpg'
+      urlImage: '/img/pink.webp'
+    },
+    {
+      urlLink: 'https://www.awk.agency/',
+      alt: 'AWAKE agency',
+      title: 'AWAKE agency',
+      description: '" Una página simple pero con calidad para una agencia de diseño. Con un efecto particular en cada sección."',
+      techOrder: [
+        'Next js',
+        'React',
+        'Tailwind Css',
+        'HTML 5',
+        'CSS 3',
+        'JavaScript',
+      ],
+      gitHubUrl:'https://github.com/mauVig/awk_page',
+      urlImage: '/img/AWK.webp'
     }
   ];
