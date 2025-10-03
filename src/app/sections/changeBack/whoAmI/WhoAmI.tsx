@@ -27,7 +27,7 @@ const WhoAmI: React.FC = () => {
     const viewportHeight = Math.min(window.innerHeight, 700); 
     container.style.height = `${viewportHeight * 1.5}px`;
     
-    const MAX_TRANSLATE_X = 150;
+    const MAX_TRANSLATE_X = 120;
 
     const handleScroll = () => {
       const containerRect = container.getBoundingClientRect();
@@ -115,18 +115,18 @@ const WhoAmI: React.FC = () => {
           />
         </div>
       </div>
-      <div className="max-w-[var(--myMaxWidth)] mx-auto px-4 pb-16 text-lg leading-relaxed">
-        <div className='text-myGray-300 sm:w-2/3'>
+      <div className="max-w-[var(--myMaxWidth)] mx-auto px-4 pb-16 text-lg leading-relaxed relative z-10">
+        <div className='text-myGray-300 md:w-2/3'>
         
           <p className="mb-8 text-3xl font-bold leading-relaxed bg-gradient-to-r from-myOrange-400 to-myOrange-600 bg-clip-text text-transparent border-l-4 border-myOrange-500 pl-6 py-4">
             Soy Mauro Vigliero, un desarrollador que viene del mundo de la música y la creatividad, ¡Logré que el código y el arte se lleven muy bien! ✨
           </p>
           
-          <p className="mb-8 text-xl leading-relaxed bg-myBack-700/50 rounded-lg p-6 border border-myGray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-myBack-700/70">
+          <p className="mb-8 text-xl leading-11  bg-myBack-700/50 rounded-lg p-6 border border-myGray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-myBack-700/70">
             Mi historia arranca en la secundaria donde hice la especialización en programación aprendiendo con <span className="text-myOrange-400 font-semibold">Visual Basic</span>. Luego pasaron 10 años donde toqué en varias bandas como armoniquista, estudié locución en ISER y me recibí. En 2020, justo en la pandemia, estudié diseño y programación web en la escuela Da Vinci 📚 y desde ese entonces no paré de programar, encontrando una profesión que me hace feliz. 🎯 Hoy, cuento con <span className="text-myOrange-400 font-semibold">2 años de experiencia en el mundo corporativo y tambien 1 año y medio como freelance</span>.
           </p>
           
-          <p className="mb-6 text-xl leading-relaxed bg-gradient-to-br from-myBack-700/40 to-myBack-600/40 rounded-xl p-6 border-2 border-myOrange-500/20 relative overflow-hidden">
+          <p className="mb-6 text-xl leading-11 bg-gradient-to-br from-myBack-700/40 to-myBack-600/40 rounded-xl p-6 border-2 border-myOrange-500/20 relative overflow-hidden">
            
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-myOrange-400/5 to-transparent"></span>
             <span className="relative z-10">

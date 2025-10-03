@@ -15,7 +15,7 @@ interface propsContentFreelance {
 }
 
 const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, alt, title, description, techOrder}) => {
-
+  
   const motionSctack = myStack
     .filter(tech => techOrder.includes(tech.name))
     .sort((a, b) => techOrder.indexOf(a.name) - techOrder.indexOf(b.name));

@@ -62,7 +62,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
         <TechCard
           key={index}
           tech={tech}
-          iconSize={iconSize}
+          // iconSize={iconSize}
           isHighlighted={isHighlighted}
           index={index}
         />

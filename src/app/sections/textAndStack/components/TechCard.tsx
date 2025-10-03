@@ -2,10 +2,10 @@ import { TechItem } from "../types/typeStack";
 
 const TechCard: React.FC<{
   tech: TechItem;
-  iconSize: number;
+  iconSize?: number;
   isHighlighted: boolean;
   index: number;
-}> = ({ tech, iconSize, isHighlighted, index }) => {
+}> = ({ tech, isHighlighted, index }) => {
   const IconComponent = tech.icon;
   
   return (
@@ -15,8 +15,8 @@ const TechCard: React.FC<{
       }`}
       data-tech-index={index}
     >
-      <IconComponent size={iconSize} />
-      <span className="tech-name text-sm font-bold">{tech.name}</span>
+      <IconComponent className=" w-5 h-5 xxs:w-6 xxs:h-6 xs:w-11 xs:h-11" />
+      <span className="tech-name text-sm font-bold truncate">{tech.name}</span>
     </div>
   );
 };
