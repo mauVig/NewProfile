@@ -41,6 +41,19 @@ const FallingTech: React.FC<FallingTechProps> = ({
   const [effectStarted, setEffectStarted] = useState(false);
   const [techComponents, setTechComponents] = useState<ReactElement[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Hook para detectar cambios en el tamaño de ventana
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Verificar inicial
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const components = techStack.map((tech, index) => {
@@ -192,83 +205,40 @@ const FallingTech: React.FC<FallingTechProps> = ({
         element.style.zIndex = '10';
       });
 
-      const mouse = Mouse.create(containerRef.current);
-      const mouseConstraint = MouseConstraint.create(engine, {
-        mouse,
-        constraint: {
-          stiffness: mouseConstraintStiffness,
-          render: { visible: false }
-        }
-      });
+      // Detectar si es dispositivo móvil usando el estado
+      const isMobileDevice = isMobile;
 
-      mouseConstraintRef.current = mouseConstraint;
-
-      const originalMouseDown = mouse.element.onmousedown;
-      const originalTouchStart = mouse.element.ontouchstart;
-
-      mouse.element.onmousedown = (e: MouseEvent) => {
-        const bodies = techBodies.map(tb => tb.body);
-        const mousePosition = { x: e.offsetX, y: e.offsetY };
-        
-        let hitBody = false;
-        bodies.forEach(body => {
-          const distance = Math.sqrt(
-            Math.pow(body.position.x - mousePosition.x, 2) + 
-            Math.pow(body.position.y - mousePosition.y, 2)
-          );
-          if (distance < 50) {
-            hitBody = true;
+      let mouseConstraint: Matter.MouseConstraint | null = null;
+      
+      if (!isMobileDevice) {
+        // Solo crear mouse constraint en desktop
+        const mouse = Mouse.create(containerRef.current);
+        mouseConstraint = MouseConstraint.create(engine, {
+          mouse,
+          constraint: {
+            stiffness: mouseConstraintStiffness,
+            render: { visible: false }
           }
         });
+        mouseConstraintRef.current = mouseConstraint;
+        render.mouse = mouse;
+      }
 
-        if (hitBody) {
-          if (originalMouseDown) originalMouseDown.call(mouse.element, e);
-        } else {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      };
-
-      mouse.element.ontouchstart = (e: TouchEvent) => {
-        if (!e.touches[0]) return;
-        
-        const rect = mouse.element.getBoundingClientRect();
-        const touch = e.touches[0];
-        const mousePosition = { 
-          x: touch.clientX - rect.left, 
-          y: touch.clientY - rect.top 
-        };
-        
-        const bodies = techBodies.map(tb => tb.body);
-        let hitBody = false;
-        bodies.forEach(body => {
-          const distance = Math.sqrt(
-            Math.pow(body.position.x - mousePosition.x, 2) + 
-            Math.pow(body.position.y - mousePosition.y, 2)
-          );
-          if (distance < 50) {
-            hitBody = true;
-          }
-        });
-
-        if (hitBody) {
-          if (originalTouchStart) originalTouchStart.call(mouse.element, e);
-        } else {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-      };
-
-      render.mouse = mouse;
-
-      World.add(engine.world, [
+      // Crear array de elementos para agregar al mundo
+      const worldElements: Matter.Body[] = [
         floor, 
         leftWall, 
         rightWall, 
         ceiling, 
-        mouseConstraint, 
         ...techBodies.map(tb => tb.body)
-      ]);
+      ];
+
+      // Solo agregar mouseConstraint si existe (desktop)
+      if (mouseConstraint) {
+        World.add(engine.world, [...worldElements, mouseConstraint]);
+      } else {
+        World.add(engine.world, worldElements);
+      }
 
       const runner = Runner.create();
       Runner.run(runner, engine);
@@ -324,7 +294,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
         currentContainer._cleanup();
       }
     };
-  }, [effectStarted, techComponents, gravity, wireframes, backgroundColor, mouseConstraintStiffness, isVisible]);
+  }, [effectStarted, techComponents, gravity, wireframes, backgroundColor, mouseConstraintStiffness, isVisible, isMobile]);
 
   const handleTrigger = () => {
     if (!effectStarted && (trigger === 'click' || trigger === 'hover') && isVisible) {
@@ -336,7 +306,9 @@ const FallingTech: React.FC<FallingTechProps> = ({
     <div
       ref={containerRef}
       className="relative z-[1] w-full h-full text-center p-8 overflow-hidden"
-      // style={{ touchAction: 'pan-y' }}
+      style={{ 
+        touchAction: isMobile ? 'pan-y' : 'auto' // Permitir scroll vertical en móviles
+      }}
       onClick={trigger === 'click' ? handleTrigger : undefined}
       onMouseEnter={trigger === 'hover' ? handleTrigger : undefined}
     >
@@ -348,7 +320,14 @@ const FallingTech: React.FC<FallingTechProps> = ({
           {techComponents}
         </div>
       </div>
-      <div className="absolute top-0 left-0 z-0" ref={canvasContainerRef} />
+      <div 
+        className="absolute top-0 left-0 z-0" 
+        ref={canvasContainerRef} 
+        style={{ 
+          touchAction: isMobile ? 'none' : 'auto',
+          pointerEvents: isMobile ? 'none' : 'auto' // Solo deshabilitar eventos en móviles
+        }}
+      />
     </div>
   );
 };

@@ -6,12 +6,7 @@ import { BsArrowDownCircleFill } from 'react-icons/bs'
 
 export const StackTechText: React.FC = () => {
     return (
-        <div className="h-[700px] md:h-[400px] ">
-            <div className='md:hidden flex justify-center mt-4'>
-                <a href="#experience">
-                    <BsArrowDownCircleFill size={50} className='text-myBack-800'/>
-                </a>
-            </div>
+        <div className="h-[500px] ">
             <FallingTech
                 techStack={myStack}
                 trigger="scroll"
@@ -22,11 +17,6 @@ export const StackTechText: React.FC = () => {
                 iconSize={44}
                 highlightTechs={[]}
             />
-            <div className='flex justify-center mb-4'>
-                <a href="#experience">
-                    <BsArrowDownCircleFill size={50} className='text-myBack-800'/>
-                </a>
-            </div>
         </div>
     )
 }

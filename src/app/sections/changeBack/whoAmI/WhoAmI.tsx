@@ -96,7 +96,7 @@ const WhoAmI: React.FC = () => {
     <section className=' text-myGray-300 pt-22 '>
       <motion.h2 
         ref={titleRef}
-        className='text-6xl font-bold title  mb-4 py-28 text-center'
+        className='text-6xl font-bold title mb-4 py-28 text-center'
         style={{ y: titleY }}
       >
         Quién soy?
@@ -105,7 +105,7 @@ const WhoAmI: React.FC = () => {
         ref={containerRef}
         className='relative overflow-hidden'
       >
-        <div className='sticky top-0 h-screen flex justify-center items-center'>
+        <div className='sticky top-0 flex justify-center items-center'>
           <Image
             ref={imageRef}
             src="/img/full-stack-mauro-vigliero.png"

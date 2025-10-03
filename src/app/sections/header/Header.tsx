@@ -4,12 +4,13 @@ import LightRays from "./components/LightRays";
 import RotatingText from "./components/RotatingText";
 import SplitText from "./components/SplitText";
 import { MdDownloadForOffline, MdOutlineWork } from "react-icons/md";
+import { BsArrowDownCircleFill } from "react-icons/bs";
 
 const Header = () => {
     
     return (
-        <header className={`w-full min-h-[900px] bg-myBack-800 text-myGray-100 flex justify-center items-center h-full`}>
-            <div style={{ width: '100%', height: '900px', position: 'absolute'}}>
+        <header className={`w-full min-h-svh bg-myBack-800 text-myGray-100 flex justify-center items-center h-full relative`}>
+            <div style={{ width: '100%', height: '100svh', position: 'absolute'}}>
                 <LightRays
                     raysOrigin="top-center"
                     raysColor="#FCDDB8"
@@ -27,7 +28,6 @@ const Header = () => {
                 <div className="flex flex-col justify-center items-start xxs:items-center gap-6 title font-semibold relative z-20">
                     <SplitText
                         text="Soy_Mauro"
-                        // className="text-4xl 3xs:text-5xl xxs:text-6xl xs:text-7xl sm:text-8xl md:text-9xl mb-8 lg:text-[10rem] xl:text-[14rem]"
                         className="text-[clamp(1.3rem,14vw,14rem)] "
                         delay={150}
                         duration={0.9}
@@ -40,7 +40,7 @@ const Header = () => {
                         textAlign="center"
                         tag="h1"
                     />
-                    <div className="flex justify-center items-center w-full text-[clamp(1.3rem,4.6vw,2rem)]">
+                    <div className="flex justify-center items-center w-full text-[clamp(1.7rem,5.5vw,2rem)]">
                         <h2 className="hidden xs:block ">Desarrollador</h2>
                         <RotatingText
                             texts={['Front-end','Full-stack', 'Back-end']}
@@ -97,6 +97,9 @@ const Header = () => {
                         </a>
                     </div>                     
                 </div>   
+            </div>
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-70">
+                <BsArrowDownCircleFill size={40} className='text-myGray-300'/>
             </div>
         </header>
     );

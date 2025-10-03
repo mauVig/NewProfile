@@ -77,7 +77,7 @@ const ChangeBackColor: React.FC = () => {
       </motion.div>
       
       {/* Espacio adicional entre secciones */}
-      <div className="h-32 md:h-48 lg:h-64"></div>
+      {/* <div className="h-32 md:h-48 lg:h-64"></div> */}
       
       <div ref={whoAmIRef}>
         <WhoAmI />

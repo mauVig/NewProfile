@@ -114,6 +114,7 @@ export const freelanceProjects = [
         'CSS 3',
         'JavaScript'
       ],
+      gitHubUrl:'https://github.com/mauVig/motionClinic/tree/main',
       urlImage: '/img/motion.jpg'
     },
     {
@@ -130,6 +131,7 @@ export const freelanceProjects = [
         'CSS 3',
         'JavaScript'
       ],
+      gitHubUrl:'https://github.com/mauVig/Adviter',
       urlImage: '/img/adviters.jpg'
     },
     {
@@ -142,6 +144,7 @@ export const freelanceProjects = [
         'CSS 3',
         'JavaScript'
       ],
+      gitHubUrl:'https://github.com/mauVig/Pink',
       urlImage: '/img/pink.jpg'
     }
   ];
