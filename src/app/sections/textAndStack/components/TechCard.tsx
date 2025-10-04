@@ -10,7 +10,7 @@ const TechCard: React.FC<{
   
   return (
     <div 
-      className={`tech-item inline-flex items-center gap-2 px-3 py-2 m-1 rounded-lg border-myBack-800 border-2  bg-myOrange-500 shadow-sm select-none cursor-pointer hover:shadow-md transition-shadow ${
+      className={`tech-item inline-flex items-center gap-2 px-3 py-2 m-1 rounded-lg border-myBack-800 border-2  bg-myOrange-500 shadow-sm select-none hover:shadow-md transition-shadow ${
         isHighlighted ? 'border-cyan-500 bg-cyan-50 text-cyan-700' : 'border-gray-300'
       }`}
       data-tech-index={index}

@@ -46,7 +46,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
   // Hook para detectar cambios en el tamaño de ventana
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(true); // Siempre en modo "móvil" para deshabilitar drag
     };
     
     checkMobile(); // Verificar inicial
@@ -113,7 +113,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
         }
       },
       { 
-        threshold: 0.2,
+        threshold: 0.4,
         rootMargin: '0px'
       }
     );
@@ -205,8 +205,8 @@ const FallingTech: React.FC<FallingTechProps> = ({
         element.style.zIndex = '10';
       });
 
-      // Detectar si es dispositivo móvil usando el estado
-      const isMobileDevice = isMobile;
+      // Deshabilitar mouse constraint para todas las pantallas (solo efecto visual)
+      const isMobileDevice = true; // Forzar modo sin interacción para todas las pantallas
 
       let mouseConstraint: Matter.MouseConstraint | null = null;
       
@@ -307,7 +307,7 @@ const FallingTech: React.FC<FallingTechProps> = ({
       ref={containerRef}
       className="relative z-[1] w-full h-full text-center p-8 overflow-hidden"
       style={{ 
-        touchAction: isMobile ? 'pan-y' : 'auto' // Permitir scroll vertical en móviles
+        touchAction: 'pan-y' // Permitir scroll vertical en todas las pantallas
       }}
       onClick={trigger === 'click' ? handleTrigger : undefined}
       onMouseEnter={trigger === 'hover' ? handleTrigger : undefined}
@@ -324,8 +324,8 @@ const FallingTech: React.FC<FallingTechProps> = ({
         className="absolute top-0 left-0 z-0" 
         ref={canvasContainerRef} 
         style={{ 
-          touchAction: isMobile ? 'none' : 'auto',
-          pointerEvents: isMobile ? 'none' : 'auto' // Solo deshabilitar eventos en móviles
+          touchAction: 'none',
+          pointerEvents: 'none' // Deshabilitar eventos del canvas para todas las pantallas
         }}
       />
     </div>

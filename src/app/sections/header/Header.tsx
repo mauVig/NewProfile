@@ -15,7 +15,7 @@ const Header = () => {
     const button1Ref = useRef<HTMLAnchorElement>(null);
     const button2Ref = useRef<HTMLAnchorElement>(null);
     const linkedinRef = useRef<HTMLDivElement>(null);
-    const arrowRef = useRef<HTMLDivElement>(null);
+    const arrowRef = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
         const isMobile = window.innerWidth <= 512;
@@ -56,9 +56,9 @@ const Header = () => {
                 <LightRays
                     raysOrigin="top-center"
                     raysColor="#FCDDB8"
-                    raysSpeed={1.35}
-                    lightSpread={20}
-                    rayLength={10}
+                    raysSpeed={1}
+                    lightSpread={10}
+                    rayLength={3}
                     followMouse={true}
                     mouseInfluence={0.1}
                     noiseAmount={0.1}
@@ -147,9 +147,9 @@ const Header = () => {
                     </div>                     
                 </div>   
             </div>
-            <div ref={arrowRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-70" style={{ opacity: 0 }}>
+            <a href='#textAndStack' ref={arrowRef} className="absolute bottom-10 animate-bounce z-70" style={{ opacity: 0 }}>
                 <BsArrowDownCircleFill size={40} className='text-myGray-300'/>
-            </div>
+            </a>
         </header>
     );
 };

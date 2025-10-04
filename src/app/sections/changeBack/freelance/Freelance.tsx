@@ -22,7 +22,7 @@ const Freelance = () => {
             breakpoints={{
               // Cuando la pantalla es >= 1500px
               1500: {
-                slidesPerView: 3.5,
+                slidesPerView: 3.2,
                 spaceBetween: 30,
               },
               // Cuando la pantalla es >= 1200px pero < 1500px
