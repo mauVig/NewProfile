@@ -10,7 +10,7 @@ import {
   TbBrandPhp,
   TbBrandVue,
 } from 'react-icons/tb';
-import { SiMongodb, SiExpress, SiTypescript, SiAstro, SiLaravel  } from 'react-icons/si';
+import { SiMongodb, SiExpress, SiTypescript, SiAstro, SiLaravel, SiRedux  } from 'react-icons/si';
 import { IoLogoNodejs } from 'react-icons/io';
 import { GrMysql } from 'react-icons/gr';
 import { FaAngular, FaDocker  } from 'react-icons/fa';
@@ -46,6 +46,10 @@ export const myStack = [
     icon: TbBrandReactNative,
   },
   {
+    name: 'Redux',
+    icon: SiRedux,
+  },
+  {
     name: 'Angular Js',
     icon: FaAngular,
   },
@@ -60,6 +64,10 @@ export const myStack = [
   {
     name: 'Bootstrap',
     icon: TbBrandBootstrap,
+  },
+    {
+    name: 'Zustand',
+    icon: SiRedux,
   },
   {
     name: 'Node Js',
@@ -109,6 +117,7 @@ export const freelanceProjects = [
         'Astro',
         'React',
         'Tailwind Css',
+        'Zustand',
         'Node Js',
         'HTML 5',
         'CSS 3',
@@ -151,7 +160,7 @@ export const freelanceProjects = [
       urlLink: 'https://www.awk.agency/',
       alt: 'AWAKE agency',
       title: 'AWAKE agency',
-      description: '" Una página simple pero con calidad para una agencia de diseño. Con un efecto particular en cada sección."',
+      description: '"Una página simple pero con calidad para una agencia de diseño. Con un efecto particular en cada sección."',
       techOrder: [
         'Next js',
         'React',
