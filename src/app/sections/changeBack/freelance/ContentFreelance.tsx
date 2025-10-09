@@ -12,9 +12,10 @@ interface propsContentFreelance {
   description: string;
   techOrder: string[];
   urlImage: string;
+  gitHubUrl: string;
 }
 
-const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, alt, title, description, techOrder}) => {
+const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, alt, title, description, techOrder, gitHubUrl}) => {
   
   const motionSctack = myStack
     .filter(tech => techOrder.includes(tech.name))
@@ -36,7 +37,7 @@ const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, a
           <p className='text-2xl mb-6 italic indent-8'>{description}</p>
         </div>
         <div className='h-13'>
-          <a  href="https://fabricante.logipartes.com.ar/" target="_blank" rel="noopener noreferrer"
+          <a  href={gitHubUrl} target="_blank" rel="noopener noreferrer"
           className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-6 py-1.5 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group/button hover:cursor-pointer flex items-center gap-2 w-fit"
           >
             <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover/button:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
