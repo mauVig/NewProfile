@@ -14,7 +14,7 @@ interface ContCompanyProps {
 const ContCompany: React.FC<ContCompanyProps> = ({ children, img, alt, company, comentary }) => {
     return (
         <>
-            <div className='mt-8 bg-myOrange-700 text-myGray-800 w-fit mx-auto rounded-lg'>
+            <div className='mt-8 bg-myOrange-700 text-myGray-800 w-fit mx-auto rounded-lg '>
 
                 <Image width={400} height={400} src={img} className='w-full rounded-t-lg ' alt={alt} />
                 
@@ -31,7 +31,9 @@ const ContCompany: React.FC<ContCompanyProps> = ({ children, img, alt, company, 
                             </div>
                             
                             <div className='flex flex-col justify-start gap-4 '>
-                                <h4 className='title font-bold mt-8 mb-4' style={{ fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)' }}>Ingresa a los proyectos</h4>
+                                <div>
+                                    <h4 className='title font-bold mt-8 mb-4' style={{ fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)' }}>Ingresa a los proyectos</h4>
+                                </div>
                                 {children}
                             </div>
                         </div>

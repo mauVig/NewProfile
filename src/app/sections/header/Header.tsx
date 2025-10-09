@@ -129,7 +129,7 @@ const Header = () => {
                             </button>
                         </a>
                     </div> 
-                    <div ref={linkedinRef} className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit" style={{ opacity: 0 }}>
+                    <div ref={linkedinRef} className="h-15 sm:text-lg md:text-xl lg:text-2xl w-full xs:w-fit flex flex-col items-center" style={{ opacity: 0 }}>
                         <a 
                             href="https://www.linkedin.com/in/maurovigliero/" 
                             target="_blank" 
@@ -143,13 +143,14 @@ const Header = () => {
                                 <IoLogoLinkedin size={28} />
                                 Linkedin 
                             </button>
+                        </a> 
+                        <a href='#textAndStack' ref={arrowRef} className=" animate-bounce relative z-70 mt-18 xs:mt-14" style={{ opacity: 0 }}>
+                            <BsArrowDownCircleFill size={40} className='text-myGray-300'/>
                         </a>
                     </div>                     
                 </div>   
             </div>
-            <a href='#textAndStack' ref={arrowRef} className="absolute bottom-10 animate-bounce z-70" style={{ opacity: 0 }}>
-                <BsArrowDownCircleFill size={40} className='text-myGray-300'/>
-            </a>
+           
         </header>
     );
 };

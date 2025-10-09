@@ -3,6 +3,7 @@ import React from 'react';
 import Freelance from '../changeBack/freelance/Freelance';
 import ContCompany from './ContCompany';
 import Modal from './components/modal/Modal';
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 const Experience: React.FC = () => {
 
@@ -36,12 +37,13 @@ const Experience: React.FC = () => {
                             
                             >
                                 <button  
-                                    className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl"
+                                    className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl flex items-center gap-2"
                                     >
-                                    <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-                                    <span
-                                    style={{ fontSize: 'clamp(.875rem, 2.5vw, 1.3rem)' }}
-                                    >fabricante.logipartes.com.ar</span>
+                                        <FaArrowAltCircleRight className='mt-1' />
+                                         <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                                        <span
+                                        style={{ fontSize: 'clamp(.875rem, 2.5vw, 1.3rem)' }}
+                                        >fabricante.logipartes.com.ar</span>
                                     
                                 </button>  
                             </a>
@@ -51,8 +53,10 @@ const Experience: React.FC = () => {
                             
                             >
                                 <button  
-                                    className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl"
+                                    className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl flex items-center gap-2"
                                     >
+                                        <FaArrowAltCircleRight className='mt-1' />
+
                                     <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
                                     <span
                                     style={{ fontSize: 'clamp(.875rem, 2.5vw, 1.3rem)' }}

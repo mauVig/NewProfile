@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { gsap } from 'gsap';
 import ModalContentPro1 from './ModalContentPro1';
 import ModalContentPro2 from './ModalContentPro2';
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 interface ModalProps {
   title: string;
@@ -115,11 +116,13 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
     <>  
       {/* BOTÓN PARA ABRIR EL MODAL - SIEMPRE VISIBLE */}
       <div className='h-14'>
+        
         <button 
           onClick={() => setIsOpen(true)} 
-          className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl text-left truncate"
+          className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl text-left truncate flex items-center gap-2"
           style={{ fontSize: 'clamp(.875rem, 2.5vw, 1.3rem)' }}
         >
+          <FaArrowAltCircleRight className='mt-1' />
           <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
           {renderTitle()}
         </button>  
