@@ -52,7 +52,7 @@ const Header = () => {
     
     return (
         <header className={`w-full min-h-svh bg-myBack-800 text-myGray-100 flex justify-center items-center h-full relative`}>
-            <div style={{ width: '100%', height: '100svh', position: 'absolute'}}>
+            <div style={{ width: '100%', height: '100%', position: 'absolute'}}>
                 <LightRays
                     raysOrigin="top-center"
                     raysColor="#FCDDB8"
@@ -143,8 +143,12 @@ const Header = () => {
                                 <IoLogoLinkedin size={28} />
                                 Linkedin 
                             </button>
-                        </a> 
-                        <a href='#textAndStack' ref={arrowRef} className=" animate-bounce relative z-70 mt-18 xs:mt-14" style={{ opacity: 0 }}>
+                        </a>
+                    </div>
+                    
+                    {/* Flecha de navegación separada para que forme parte de la altura del header */}
+                    <div className="flex justify-center w-full my-8 xs:my-6">
+                        <a href='#textAndStack' ref={arrowRef} className="animate-bounce z-70" style={{ opacity: 0 }}>
                             <BsArrowDownCircleFill size={40} className='text-myGray-300'/>
                         </a>
                     </div>                     
