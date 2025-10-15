@@ -13,8 +13,7 @@ import {
 import { SiMongodb, SiExpress, SiTypescript, SiAstro, SiLaravel, SiRedux  } from 'react-icons/si';
 import { IoLogoNodejs } from 'react-icons/io';
 import { GrMysql } from 'react-icons/gr';
-import { FaAngular, FaDocker  } from 'react-icons/fa';
-
+import { FaAngular, FaDocker, FaGitAlt  } from 'react-icons/fa';
 
 export const myStack = [
   {
@@ -72,6 +71,9 @@ export const myStack = [
   {
     name: 'Node Js',
     icon: IoLogoNodejs,
+  },  {
+    name: 'Git',
+    icon: FaGitAlt,
   },
   {
     name: 'Mongo Db',
@@ -110,6 +112,7 @@ export const myStack = [
 export const freelanceProjects = [
     {
       urlLink: 'https://motionclinic.com.ar/',
+      urlLinkName: 'motionclinic.com.ar',
       alt: 'Motion Clinic',
       title: 'Motion Clinic',
       description: '"Este es un sitio web que todavía sigo actualizando, es para un centro de cirugía robótica de cadera y rodilla."',
@@ -121,13 +124,15 @@ export const freelanceProjects = [
         'Node Js',
         'HTML 5',
         'CSS 3',
-        'JavaScript'
+        'JavaScript',
+        'Git'
       ],
       gitHubUrl:'https://github.com/mauVig/motionClinic/tree/main',
       urlImage: '/img/motion.webp'
     },
     {
-      urlLink: 'https://adviters.com/en',
+      urlLink: 'https://adviters.com/sp',
+      urlLinkName: 'adviters.com',
       alt: 'Adviters',
       title: 'Adviters',
       description: '"En este sitio me concentré en hacer efectos de al hacer scroll y animaciones suaves para mejorar la experiencia del usuario."',
@@ -138,26 +143,30 @@ export const freelanceProjects = [
         'Node Js',
         'HTML 5',
         'CSS 3',
-        'JavaScript'
+        'JavaScript',
+        'Git'
       ],
       gitHubUrl:'https://github.com/mauVig/Adviter',
       urlImage: '/img/adviters.webp'
     },
     {
       urlLink: 'https://lifeispink.org/',
+      urlLinkName: 'lifeispink.org',
       alt: 'Pink',
       title: 'Pink',
       description: '"Este sitio se hizo para una agencia de diseño. Y la particularidad es que se realizó sin ningún framework."',
       techOrder: [
         'HTML 5',
         'CSS 3',
-        'JavaScript'
+        'JavaScript',
+        'Git'
       ],
       gitHubUrl:'https://github.com/mauVig/Pink',
       urlImage: '/img/pink.webp'
     },
     {
       urlLink: 'https://www.awk.agency/',
+      urlLinkName: 'awk.agency',
       alt: 'AWAKE agency',
       title: 'AWAKE agency',
       description: '"Una página simple pero con calidad para una agencia de diseño. Con un efecto particular en cada sección."',
@@ -168,6 +177,7 @@ export const freelanceProjects = [
         'HTML 5',
         'CSS 3',
         'JavaScript',
+        'Git'
       ],
       gitHubUrl:'https://github.com/mauVig/awk_page',
       urlImage: '/img/AWK.webp'
