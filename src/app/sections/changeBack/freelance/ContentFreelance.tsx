@@ -36,7 +36,7 @@ const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, a
         </div>
         <div className='h-26 xs:h-13 xs:flex gap-2'>
 
-          <a  href={urlLink} target="_blank" rel="noopener noreferrer"
+          <a  href={gitHubUrl} target="_blank" rel="noopener noreferrer"
           className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-1.5 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group/button hover:cursor-pointer flex items-center gap-2 w-fit mb-4 xs:mb-0 "
           >
             <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover/button:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
@@ -44,7 +44,7 @@ const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, a
             <span className="xs:hidden">Repositorio</span>
           </a>
 
-          <a  href={gitHubUrl} target="_blank" rel="noopener noreferrer"
+          <a  href={urlLink} target="_blank" rel="noopener noreferrer"
           className="bg-myGray-800 text-myGray-200 border border-myGray-800 border-b-4 font-medium overflow-hidden relative pl-2 pr-6 xs:py-1.5 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group/button hover:cursor-pointer flex items-center gap-2 w-fit py-3"
           >
             <span className="bg-red-400 shadow-red-400 absolute -top-[150%] left-0 inline-flex w-96 h-[5px] rounded-md opacity-50 group-hover/button:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
