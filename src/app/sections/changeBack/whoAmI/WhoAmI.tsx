@@ -16,7 +16,7 @@ const WhoAmI: React.FC = () => {
   });
 
   // Movimiento sutil hacia arriba
-  const titleY = useTransform(titleScrollProgress, [0, 1], [0, -300]);
+  const titleY = useTransform(titleScrollProgress, [0, 1], [0, -500]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -114,9 +114,9 @@ const WhoAmI: React.FC = () => {
         </motion.h2>
         <div 
           ref={containerRef}
-          className='relative overflow-hidden'
+          className='relative overflow-hidden lineImg'
         >
-          <div className='sticky flex justify-center items-center'>
+          <div className='sticky flex justify-center items-center  '>
             <Image
               ref={imageRef}
               src="/img/full-stack-mauro-vigliero.png"
@@ -126,12 +126,12 @@ const WhoAmI: React.FC = () => {
             />
           </div>
         </div>
-        <div className="max-w-[var(--myMaxWidth)] mx-auto px-2 md:px-4  text-lg leading-relaxed relative z-10">
+        <main className="max-w-[var(--myMaxWidth)] mx-auto px-2 md:px-4  text-lg leading-relaxed relative z-10">
           <div className='text-myGray-300'>
           
-            <p className="mb-8 text-3xl font-bold leading-relaxed bg-gradient-to-r from-myOrange-400 to-myOrange-600 bg-clip-text text-transparent border-l-4 border-l-myOrange-500 pl-6 py-4 drop-shadow-2xl drop-shadow-myBack-800">
-              Soy MAURO VIGLIERO, un desarrollador que viene del mundo de la música y la creatividad. <br /> ¡Logré que el código y el arte se lleven muy bien! ✨
-            </p>
+            <h1 className="mb-8 text-3xl font-bold leading-relaxed bg-gradient-to-r from-myOrange-400 to-myOrange-600 bg-clip-text text-transparent border-l-4 border-l-myOrange-500 pl-6 py-4 drop-shadow-2xl drop-shadow-myBack-800">
+              Soy  MAURO VIGLIERO, un desarrollador que viene del mundo de la música y la creatividad. <br /> ¡Logré que el código y el arte se lleven muy bien! ✨
+            </h1>
             
             <p className="mb-8 text-xl leading-11  bg-myBack-700/80 rounded-lg p-6 border border-myGray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-myBack-700/70">
               Mi historia arranca en la secundaria donde hice la especialización en programación aprendiendo con <span className="text-myOrange-400 font-semibold">Visual Basic</span>. Luego pasaron 10 años donde toqué en varias bandas musicales como armoniquista, estudié locución en ISER y me recibí. En 2020, justo en la pandemia, estudié diseño y programación web en la escuela Da Vinci 📚 y desde ese entonces no paré de programar, encontrando una profesión que me hace feliz. 🎯 Hoy, cuento con <span className="text-myOrange-400 font-semibold">2 años de experiencia en el mundo corporativo y tambien 1 año y medio como freelance</span>.
@@ -140,7 +140,7 @@ const WhoAmI: React.FC = () => {
             <p className="mb-6 text-xl leading-11 bg-gradient-to-br from-myBack-700/40 to-myBack-600/40 rounded-xl p-6 border-2 border-myOrange-500/20 relative overflow-hidden">
             
               <span className="relative z-10">
-                Como programador <span className="text-myOrange-400 font-bold">Full-Stack</span>, fusiono mi experiencia artística con el rigor del código. No solo hago que las cosas funcionen, sino que busco que se vean increíbles. Me siento muy cómodo trabajando con Frontend utilizando <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">React</span>, <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">Next.js</span> y <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">TypeScript</span>, y me defiendo muy bien en el Backend con <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">Node.js</span> y <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">Express.js</span>. Esta mezcla me permite encarar cualquier proyecto y transformarlo en una experiencia web que no solo es robusta y anda bien, sino que tiene un diseño innovador y que lo saca de lo común, como si fuera una canción bien hecha. 💡
+                Como programador <span className="text-myOrange-400 font-bold">Full-Stack</span>, fusiono mi experiencia artística con el código. No solo hago que las cosas funcionen, sino que busco que se vean increíbles. Me siento muy cómodo trabajando con Frontend utilizando <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">React</span>, <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">Next.js</span> y <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">TypeScript</span>, y me defiendo muy bien en el Backend con <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">Node.js</span> y <span className="bg-myOrange-500/20 px-2 py-1 rounded text-myOrange-300 font-semibold">Express.js</span>. Esta mezcla me permite encarar cualquier proyecto y transformarlo en una experiencia web que no solo es robusta y anda bien, sino que tiene un diseño innovador y que lo saca de lo común, como si fuera una canción bien hecha. 💡
               </span>
             </p>
             
@@ -168,9 +168,8 @@ const WhoAmI: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
-    
     </section>
   );
 };

@@ -34,7 +34,7 @@ const ContentFreelance:React.FC<propsContentFreelance> = ({ urlLink, urlImage, a
           <HiMiniChatBubbleLeftEllipsis className='absolute text-2xl mt-1' />
           <p className='text-2xl mb-6 italic indent-8'>{description}</p>
         </div>
-        <div className='h-26 xs:h-13 xs:flex gap-2'>
+        <div className='h-26 xs:h-13 xs:flex gap-2 mb-8'>
 
           <a  href={gitHubUrl} target="_blank" rel="noopener noreferrer"
           className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-1.5 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group/button hover:cursor-pointer flex items-center gap-2 w-fit mb-4 xs:mb-0 "
