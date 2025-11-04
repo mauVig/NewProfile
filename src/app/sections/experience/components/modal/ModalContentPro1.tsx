@@ -78,11 +78,11 @@ const ModalContentPro1 = () => {
                     <div className="flex items-center gap-4 flex-wrap">
                     <div className="flex items-center gap-1">
                             <FaNodeJs className="text-lg" style={{ color: '#339933' }} />
-                            <span className="text-lg text-myOrange-800">Node.js</span>
+                            <span className="text-lg text-myOrange-800">Node js</span>
                         </div>
                         <div className="flex items-center gap-1">
                             <SiExpress className="text-lg" style={{ color: '#339933' }} />
-                            <span className="text-lg text-myOrange-800">Express.js</span>
+                            <span className="text-lg text-myOrange-800">Express js</span>
                         </div>
                         <div className="flex items-center gap-1">
                             <SiMongodb className="text-lg" style={{ color: '#47A248' }} />

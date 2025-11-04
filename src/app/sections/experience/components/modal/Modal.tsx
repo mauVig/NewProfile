@@ -17,7 +17,7 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
   const contentRef = useRef(null);
 
   const renderTitle = () => {
-    // Si el título contiene <br>, lo separamos y aplicamos clases responsive
+    
     if (title.includes('<br')) {
       const parts = title.split(/<br[^>]*>/);
       return (
@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
 
   useEffect(() => {
     if (isOpen) {
-      // Deshabilitar scroll del body cuando se abre el modal
+      
       document.body.style.overflow = 'hidden';
       
       // Animación de entrada con GSAP
@@ -114,7 +114,6 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
 
   return (
     <>  
-      {/* BOTÓN PARA ABRIR EL MODAL - SIEMPRE VISIBLE */}
       <div className='h-14'>
         
         <button 
@@ -128,7 +127,6 @@ const Modal: React.FC<ModalProps> = ({ title, pro }) => {
         </button>  
       </div>
 
-      {/* MODAL - RENDERIZADO EN UN PORTAL */}
       {isOpen && (
         <div 
           ref={overlayRef}

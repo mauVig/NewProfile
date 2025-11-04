@@ -10,7 +10,7 @@ import {
   TbBrandPhp,
   TbBrandVue,
 } from 'react-icons/tb';
-import { SiMongodb, SiExpress, SiTypescript, SiAstro, SiLaravel, SiRedux  } from 'react-icons/si';
+import { SiMongodb, SiExpress, SiTypescript, SiAstro, SiLaravel, SiRedux, SiNestjs  } from 'react-icons/si';
 import { IoLogoNodejs } from 'react-icons/io';
 import { GrMysql } from 'react-icons/gr';
 import { FaAngular, FaDocker, FaGitAlt  } from 'react-icons/fa';
@@ -84,6 +84,10 @@ export const myStack = [
     icon: SiExpress,
   },
   {
+    name: 'Nest js',
+    icon: SiNestjs ,
+  },
+  {
     name: 'Docker',
     icon: FaDocker,
   },
@@ -122,6 +126,7 @@ export const freelanceProjects = [
         'Tailwind Css',
         'Zustand',
         'Node Js',
+        'Express',
         'HTML 5',
         'CSS 3',
         'JavaScript',

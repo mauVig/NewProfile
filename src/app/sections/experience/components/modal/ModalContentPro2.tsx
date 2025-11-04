@@ -16,7 +16,7 @@ import {
   FaAngular,
   FaAws
 } from 'react-icons/fa';
-import { SiTypescript, SiExpress, SiJest, SiNgrx } from 'react-icons/si';
+import { SiTypescript, SiExpress, SiJest, SiNgrx, SiNestjs } from 'react-icons/si';
 import { MdBusinessCenter } from "react-icons/md";
 import { HiMiniBriefcase } from 'react-icons/hi2';
 import { AiFillSnippets } from 'react-icons/ai';
@@ -29,7 +29,7 @@ const ModalContentPro2 = () => {
         <div className="flex items-center mb-6">
           <MdBusinessCenter  className="text-4xl mr-2 pt-1.5" />
           <h3 className="m-0 text-4xl font-bold ">
-            Oportunidades de negocio.
+            Evaluar oportunidades de negocio.
           </h3>
         </div>
         
@@ -95,13 +95,17 @@ const ModalContentPro2 = () => {
                         Backend:
                     </h5>
                     <div className="flex items-center gap-4 flex-wrap">
-                    <div className="flex items-center gap-1">
-                        <FaNodeJs className="text-lg" style={{ color: '#339933' }} />
+                        <div className="flex items-center gap-1">
+                            <FaNodeJs className="text-lg" style={{ color: '#339933' }} />
                             <span className="text-lg text-myOrange-800">Node.js</span>
                         </div>
-                        <div className="flex items-center gap-1">
+                        {/* <div className="flex items-center gap-1">
                             <SiExpress className="text-lg" style={{ color: '#339933' }} />
                             <span className="text-lg text-myOrange-800">Express.js</span>
+                        </div> */}
+                        <div className="flex items-center gap-1">
+                            <SiNestjs  className="text-lg" style={{ color: '#B52E31' }} />
+                            <span className="text-lg text-myOrange-800">Nest js</span>
                         </div>
                         <div className="flex items-center gap-1">
                             <FaAws className="text-lg" style={{ color: '#47A248' }} />
