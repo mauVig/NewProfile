@@ -20,7 +20,7 @@ const Experience: React.FC = () => {
                         img='/img/accImg.webp' 
                         alt='Imagen de la esquina del edificio de la empresa en en modo dibujitos'
                         company='Accenture' 
-                        comentary="Durante mis 2 años en la empresa, participé en proyectos innovadores que me permitieron crecer profesionalmente y colaborar con equipos excepcionales."
+                        comentary="Participé en proyectos innovadores que me permitieron crecer profesionalmente y colaborar con equipos excepcionales."
                     >
                         <Modal title="Email marketing" pro={1}/>
                         <Modal title="Evaluar oportunidades <br/> de negocio" pro={2}/>
@@ -33,9 +33,7 @@ const Experience: React.FC = () => {
                         comentary="Este fue mi primer trabajo como desarrollador, el cual le tengo gran cariño. Lamentablemente la empresa no prosperó, pero siempre voy a tener en mi recuerdo esta gran experiencia."
                     >
                         <div className="h-14">
-                            <a href="https://fabricante.logipartes.com.ar/" target="_blank" rel="noopener noreferrer"
-                            
-                            >
+                            <a href="https://fabricante.logipartes.com.ar/" target="_blank" rel="noopener noreferrer">
                                 <button  
                                     className="bg-myOrange-400 text-myGray-800 border border-myGray-800 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:cursor-pointer text-xl flex items-center gap-2"
                                     >

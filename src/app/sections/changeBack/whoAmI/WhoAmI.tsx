@@ -134,7 +134,7 @@ const WhoAmI: React.FC = () => {
             </h1>
             
             <p className="mb-8 text-xl leading-11  bg-myBack-700/80 rounded-lg p-6 border border-myGray-600/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-myBack-700/70">
-              Mi historia arranca en la secundaria donde hice la especialización en programación aprendiendo con <span className="text-myOrange-400 font-semibold">Visual Basic</span>. Luego pasaron 10 años donde toqué en varias bandas musicales como armoniquista, estudié locución en ISER y me recibí. En 2020, justo en la pandemia, estudié diseño y programación web en la escuela Da Vinci 📚 y desde ese entonces no paré de programar, encontrando una profesión que me hace feliz. 🎯 Hoy, cuento con <span className="text-myOrange-400 font-semibold">2 años de experiencia en el mundo corporativo y tambien 1 año y medio como freelance</span>.
+              Mi historia arranca en la secundaria donde hice la especialización en programación aprendiendo con <span className="text-myOrange-400 font-semibold">Visual Basic</span>. Luego pasaron 10 años donde toqué en varias bandas musicales como armoniquista, estudié locución en ISER y me recibí. En 2020, justo en la pandemia, estudié diseño y programación web en la escuela Da Vinci 📚 y desde ese entonces no paré de programar, encontrando una profesión que me hace feliz. 🎯 Hoy, cuento con <span className="text-myOrange-400 font-semibold">4 años de experiencia</span>.
             </p>
             
             <p className="mb-6 text-xl leading-11 bg-gradient-to-br from-myBack-700/40 to-myBack-600/40 rounded-xl p-6 border-2 border-myOrange-500/20 relative overflow-hidden">

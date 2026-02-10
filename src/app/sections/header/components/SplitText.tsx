@@ -29,8 +29,8 @@ const SplitText: React.FC<SplitTextProps> = ({
   duration = 0.6,
   ease = 'power3.out',
   splitType = 'chars',
-  from = { opacity: 0, y: 40 },
-  to = { opacity: 1, y: 0 },
+  from = { opacity: 0, y: 40, visibility: 'hidden' },
+  to = { opacity: 1, y: 0, visibility: 'visible' },
   threshold = 0.1,
   rootMargin = '-100px',
   tag = 'p',
@@ -96,6 +96,8 @@ const SplitText: React.FC<SplitTextProps> = ({
         reduceWhiteSpace: false,
         onSplit: (self: GSAPSplitText) => {
           assignTargets(self);
+          // Inmediatamente ocultar todos los elementos después del split
+          gsap.set(targets, { ...from });
           return gsap.fromTo(
             targets,
             { ...from },
@@ -156,7 +158,9 @@ const SplitText: React.FC<SplitTextProps> = ({
     const style: React.CSSProperties = {
       textAlign,
       wordWrap: 'break-word',
-      willChange: 'transform, opacity'
+      willChange: 'transform, opacity',
+      visibility: fontsLoaded ? 'visible' : 'hidden',
+      opacity: fontsLoaded ? 1 : 0
     };
     const classes = `split-parent overflow-hidden inline-block whitespace-normal ${className}`;
     switch (tag) {
