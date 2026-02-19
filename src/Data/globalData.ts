@@ -154,21 +154,21 @@ export const freelanceProjects = [
       gitHubUrl:'https://github.com/mauVig/Adviter',
       urlImage: '/img/adviters.webp'
     },
-    {
-      urlLink: 'https://lifeispink.org/',
-      urlLinkName: 'lifeispink.org',
-      alt: 'Pink',
-      title: 'Pink',
-      description: '"Este sitio se hizo para una agencia de diseño. Y la particularidad es que se realizó sin ningún framework."',
-      techOrder: [
-        'HTML 5',
-        'CSS 3',
-        'JavaScript',
-        'Git'
-      ],
-      gitHubUrl:'https://github.com/mauVig/Pink',
-      urlImage: '/img/pink.webp'
-    },
+    // {
+    //   urlLink: 'https://lifeispink.org/',
+    //   urlLinkName: 'lifeispink.org',
+    //   alt: 'Pink',
+    //   title: 'Pink',
+    //   description: '"Este sitio se hizo para una agencia de diseño. Y la particularidad es que se realizó sin ningún framework."',
+    //   techOrder: [
+    //     'HTML 5',
+    //     'CSS 3',
+    //     'JavaScript',
+    //     'Git'
+    //   ],
+    //   gitHubUrl:'https://github.com/mauVig/Pink',
+    //   urlImage: '/img/pink.webp'
+    // },
     {
       urlLink: 'https://www.awk.agency/',
       urlLinkName: 'awk.agency',
